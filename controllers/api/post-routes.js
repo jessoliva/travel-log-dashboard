@@ -80,3 +80,25 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err)
     });
 });
+
+// DELETE a post
+router.delete('/:id', (req, res) => {
+    Post.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(postData => {
+        if (!postData) {
+            res.status(404).json({
+                message: "No post found with that ID."
+            });
+            return;
+        }
+        res.json(postData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
