@@ -33,4 +33,26 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// CREATE a user
+router.post('/', (req, res) => {
+    User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+    .then(newUserData => {
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json(newUserData);
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
+
 module.exports = router;
