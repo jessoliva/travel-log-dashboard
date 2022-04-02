@@ -58,3 +58,25 @@ router.post('/', (req, res) => {
         res.status(500).json(err)
     });
 });
+
+// UPDATE a post
+router.put('/:id', (req, res) => {
+    Post.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(postData => {
+        if (!postData) {
+            res.status(404).json({
+                message: "No post found with that ID."
+            });
+            return;
+        }
+        res.json(postData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
