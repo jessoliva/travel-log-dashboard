@@ -36,9 +36,25 @@ router.get('/:id', (req, res) => {
 // CREATE a post
 router.post('/', (req, res) => {
     Post.create({
-
+        title: req.body.title,
+        location: req.body.location,
+        description: req.body.description,
+        restaurants: req.body.restaurants,
+        attractions: req.body.attractions,
+        lodging_cost: req.body.lodging_cost,
+        transportation_cost: req.body.transportation_cost,
+        transportation_tips: req.body.transportation_tips,
+        travel_tips: req.body.travel_tips,
+        safety_tips: req.body.safety_tips,
+        pets: req.body.pets,
+        kids: req.body.kids,
+        companion: req.body.companion,
+        safety_rating: req.body.safety_rating,
+        user_id: req.session.user_id
     })
-    .then(newPostData => {
-        
-    })
+    .then(newPostData => res.json(newPostData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 });
