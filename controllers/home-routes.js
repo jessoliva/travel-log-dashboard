@@ -4,12 +4,7 @@ const { User, Post, Comment } = require('../models');
 // render homepage
 router.get('/', (req, res) => {
     console.log(req.session);
-<<<<<<< HEAD
-    res.render(
-        'homepage',
-=======
     res.render('homepage',
->>>>>>> dev/jess
         { loggedIn: req.session.loggedIn }
     )
 });
@@ -29,12 +24,7 @@ router.get('/posts', (req, res) => {
     Post.findAll()
     .then(postData => {
         const posts = postData.map(post => post.get({ plain: true }));
-<<<<<<< HEAD
-        res.render(
-            'single-post',
-=======
         res.render('all-posts',
->>>>>>> dev/jess
             {
                 posts,
                 loggedIn: req.session.loggedIn

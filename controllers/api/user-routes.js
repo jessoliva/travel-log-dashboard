@@ -3,7 +3,11 @@ const { User } = require('../../models');
 
 // GET all users
 router.get('/', (req, res) => {
-    User.findAll()
+    User.findAll({
+        attributes: {
+            exclude: ['password']
+        }
+    })
     .then(userData => res.json(userData))
     .catch(err => {
         console.log(err);
@@ -16,6 +20,9 @@ router.get('/:id', (req, res) => {
     User.findAll({
         where: {
             id: req.params.id
+        },
+        attributes: {
+            exclude: ['password']
         }
     })
     .then(userData => {
@@ -58,13 +65,21 @@ router.post('/', (req, res) => {
 // LOGIN a user
 router.post('/login', (req, res) => {
     User.findOne({
-        wher: {
+        where: {
             email: req.body.email
         }
     })
     .then(userData => {
         if (!userData) {
             res.status(400).json({ message: "No user with that email address."});
+            return;
+        }
+
+        // checks if password input matches user's password
+        const validPw = userData.pwCheck(req.body.password);
+
+        if (!validPw) {
+            res.status(400).json({ message: "Incorrect password."});
             return;
         }
 
