@@ -28,10 +28,10 @@ router.get('/posts', (req, res) => {
     .then(postData => {
         const posts = postData.map(post => post.get({ plain: true }));
         res.render(
-            // all-posts filename
+            'single-post',
             {
                 posts,
-                loggedIn: req.sessiojn.loggedIn
+                loggedIn: req.session.loggedIn
             }
         )
     })
