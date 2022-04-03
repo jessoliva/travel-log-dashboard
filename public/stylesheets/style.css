@@ -60,11 +60,11 @@ body {
 }
 
 .tip {
-   height: 40px;
+   height: 50px;
    border: 1px black solid;
    border-radius: 15px;
    background-color: var(--form-background);
-   width: 80%;
+   width: 90%;
 
 }
 
@@ -76,6 +76,64 @@ body {
 }
 
 
+
+/*****************************************************/
+
+/*****************************************************/
+/* Create-Post Styles */
+.create-post-top {
+   background-color: var(--primary);
+   height: 300px;
+
+   border-radius: 15px;
+
+}
+
+.cp-top-left {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   justify-content: space-between;
+}
+
+.cp-top-right {
+   background-color: var(--form-background);
+   border-radius: 15px;
+   height: 100%;
+   width: 100%;
+}
+
+
+.single-post-middle {
+   min-height: 150px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+}
+
+.file-input {
+   height: 50px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+   width: 90%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.tips-heading {
+   font-style: italic;
+   font-size: 30px;
+   margin-bottom: 0;
+   margin-top: 20px;
+}
+
+
+.hidden {
+   display: none;
+}
 
 /*****************************************************/
 
