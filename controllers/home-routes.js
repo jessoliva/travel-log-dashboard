@@ -6,9 +6,7 @@ router.get('/', (req, res) => {
     console.log(req.session);
     res.render(
         // homepage filename
-        {
-        loggedIn: req.session.loggedIn
-        }
+        { loggedIn: req.session.loggedIn }
     )
 });
 
@@ -22,6 +20,25 @@ router.get('/login', (req, res) => {
     res.render(
         // login filename
     )
+});
+
+// render all posts page
+router.get('/posts', (req, res) => {
+    Post.findAll()
+    .then(postData => {
+        const posts = postData.map(post => post.get({ plain: true }));
+        res.render(
+            // all-posts filename
+            {
+                posts,
+                loggedIn: req.sessiojn.loggedIn
+            }
+        )
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;
