@@ -11,8 +11,7 @@
     />
     <!-- google fonts link -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400;500;600&display=swap"
-      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Allison&family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet"
     />
     <!-- bootstrap link -->
     <link
@@ -22,101 +21,104 @@
       crossorigin="anonymous"
     />
     <!-- css link -->
-    <link rel="stylesheet" href="./public/stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
 
     <title>SunnySkies</title>
   </head>
 
-  <body class="vw-100">
+  <body class="vw-100 vh-100">
+
     <!-- hero -->
-    <header class="hero vw-100 sticky-top text-center">
-      <h1><i class="fa-solid fa-cloud-sun"></i>Weather Dashboard</h1>
-      <p class="fs-6">Wind, Rain, or Shine, We'll Let You Know</p>
+    <header class="hero shadow vw-100 sticky-top text-center">
+      <h1>travel.diary</h1>
+      <p>the world is yours to explore</p>
+      <!-- navigation section -->
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="about.html">Login</a>
+          </li>
+          <li>
+            <a href="contact.html">Sign Up</a>
+          </li>
     </header>
 
-    <main class="container-fluid vh-100 vw-100 p-0">
-      <!-- rows and columns -->
-      <section class="row w-100">
-        <!-- navigation section -->
-        <section class="navigation col-sm-4 col-35 col-12">
-          <!-- search section -->
-          <div class="search d-flex flex-wrap align-items-center">
-            <form
-              id="user-form"
-              class="px-3 d-flex flex-wrap justify-content-center"
-            >
-              <input
-                name="city"
-                id="city"
-                type="text"
-                autofocus="true"
-                placeholder="Enter a City Name"
-                class="form-input w-100 my-3 p-2 rounded-pill text-center"
-              />
-              <button
-                id="search-city"
-                type="submit"
-                class="btn-search btn rounded-pill"
-              >
-                Weather Me!
-              </button>
-            </form>
-          </div>
+    <main class="main p-0">
 
-          <!-- drop-down select section -->
-          <div class="h-50 px-3 text-center">
-            <select id="cities" class="w-100 p-2 rounded-pill text-center">
-              <option value="Searched Cities">Searched Cities</option>
-            </select>
-          </div>
-        </section>
+      <!-- posts section -->
+      <section class="posts vw-100 h-100 d-flex">
+        <article class="post">
+            <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+            <h3 class="location text-white">Austin, Texas</h3>
+            <h3 class="title text-center text-white">My Journey Through Austin </h3>
+        </article>
 
-        <!-- current weather section -->
-        <section class="curr-container col-sm-8 col-85 col-12 p-0">
-          <!-- current weather section -->
-          <div class="current d-flex flex-wrap justify-content-center align-items-center">
-            <h2 id="currDate"></h2>
-            <h2 class="w-100 mb-0 text-center">
-              <span id="curr-city" class="w-100">City</span> Weather
-            </h2>
-            <div class="weather-container d-flex">
-               <img id="icon" src="http://openweathermap.org/img/wn/02d@2x.png" />
-               <h3 id="temp"> <i class="fa-solid fa-temperature-high fa-lg"> </i><i class="fa-solid fa-temperature-low fa-lg"></i></h3>
-            </div>
-            <div class="weather-container d-flex flex-wrap justify-content-center">
-               <h3 class="w-100 text-center">UV Index</h3>
-               <h3 id="uv-index"><i class="fa-solid fa-sun"></i></h3>
-            </div>
-            <div class="weather-container d-flex flex-wrap justify-content-center">
-               <h3 class="w-100 text-center">Wind</h3>
-               <h3 id="wind"><i class="fa-solid fa-wind"></i></h3>
-            </div>
-            <div class="weather-container d-flex flex-wrap justify-content-center">
-               <h3 class="w-100 text-center">Humidity</h3>
-               <h3 id="humidity">*sweating*</h3>
-            </div>
-          </div>
-        </section>
-      </section>
+        <article class="post">
+            <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+            <h3 class="location text-white">Austin, Texas</h3>
+            <h3 class="title text-center text-white">My Journey Through Austin </h3>
+        </article>
 
-      <!-- weather forecast section -->
-      <section
-        id="days-container"
-        class="forecast d-flex text-center"
-      >
-      <article class="days">
-         <h3 class="p-0 text-white">April 02, 2022</h3>
-         <h3>Saturday</h3>
-         <div class="img-container">
-            <img class="icon" src="http://openweathermap.org/img/wn/10d@2x.png">
-         </div>
-         <h3 class="text-white">L: 54 °F</h3>
-         <h3 class="text-white">H: 71 °F</h3>
-         <h3>12.97 mph</h3>
-         <h3 class="day-humidity">Humidity: 63%</h3>
-      </article>
+        <article class="post">
+            <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+            <h3 class="location text-white">Austin, Texas</h3>
+            <h3 class="title text-center text-white">My Journey Through Austin </h3>
+        </article>
 
-      </section>
+        <article class="post">
+            <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+            <h3 class="location text-white">Austin, Texas</h3>
+            <h3 class="title text-center text-white">My Journey Through Austin </h3>
+        </article>
+
+        <article class="post">
+         <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+         <h3 class="location text-white">Austin, Texas</h3>
+         <h3 class="title text-center text-white">My Journey Through Austin </h3>
+         </article>
+
+      <!-- travel section -->
+      <!-- <section class="travel p-3">
+        <h1>Let's Travel the World</h1>
+        <div>
+          <form id="user-form">
+            <input
+              name="city"
+              id="city"
+              type="text"
+              autofocus="true"
+              placeholder="Continent"
+              class="form-input p-2 rounded-pill text-center"
+            />
+            <input
+            name="city"
+            id="city"
+            type="text"
+            autofocus="true"
+            placeholder="Country"
+            class="form-input p-2 rounded-pill text-center"
+            />
+            <input
+            name="city"
+            id="city"
+            type="text"
+            autofocus="true"
+            placeholder="Tags"
+            class="form-input p-2 rounded-pill text-center"
+            />
+            <button
+              id="search-city"
+              type="submit"
+              class="btn-search btn rounded-pill shadow"
+            ><i class="fa-solid fa-earth-americas"></i></button>
+          </form>
+        </div>
+        <p>Don't have any ideas? Search without filters to view it all. </p>
+      </section> -->
+
     </main>
 
     <!-- jquery link -->
