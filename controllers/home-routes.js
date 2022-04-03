@@ -5,21 +5,30 @@ const { User, Post, Comment } = require('../models');
 router.get('/', (req, res) => {
     console.log(req.session);
     res.render(
-        // homepage filename
+        'homepage',
         { loggedIn: req.session.loggedIn }
-    )
+    );
+});
+
+// render sign-up page
+router.get('/sign-up', (req, res) => {
+    console.log(req.session);
+    res.render(
+        'sign-up',
+        { loggedIn: req.session.loggedIn }
+    );
 });
 
 // render login page
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
 
-    res.render(
-        // login filename
-    )
+    // check for a session and redirect to the homepage if one exists
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('login');
 });
 
 // render all posts page

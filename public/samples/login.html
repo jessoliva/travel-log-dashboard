@@ -36,37 +36,46 @@
       <nav>
         <ul>
           <li>
-            <a href="/">Home</a>
-          </li>
-          {{#if loggedIn}}
-          <li>
-            <a href="/saved-posts">Saved Posts</a>
+            <a href="index.html">Home</a>
           </li>
           <li>
-            <a href="/my-posts">My Posts</a>
+            <a href="about.html">Login</a>
           </li>
           <li>
-            <a href="/logout">Logout</a>
-          </li>
-          {{else}}
-          <li>
-            <a href="/login">Login</a>
-          </li>
-          <li>
-            <a href="/sign-up">Sign Up</a>
-          </li>
-          {{/if}}
-          {{!-- need another if statement when a post is clicked --}}
-          <li>
-            <a href="">Back</a>
-          </li>
-          <li>
-            <a href="contact.html">Next</a>
+            <a href="contact.html">Sign Up</a>
           </li>
     </header>
 
     <main class="main p-0">
-     {{{body}}}
+      <!-- travel section -->
+      <section class="travel p-3">
+        <!-- login section -->
+        <div class="user-log">
+          <form id="user-form">
+            <input
+            name="city"
+            id="city"
+            type="text"
+            autofocus="true"
+            placeholder="Username"
+            class="form-input p-2 rounded-pill text-center"
+            />
+            <input
+            name="city"
+            id="city"
+            type="text"
+            autofocus="true"
+            placeholder="Password"
+            class="form-input p-2 rounded-pill text-center"
+            />
+            <button
+              id="search-city"
+              type="submit"
+              class="btn-search btn rounded-pill shadow"
+            >Login</button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <!-- jquery link -->

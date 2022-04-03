@@ -93,7 +93,8 @@ body {
 }
 
 #user-form {
-   width: 50%;
+   /* width: 50%; */
+   width: 375px;
 }
 
 .form-input {
@@ -103,7 +104,7 @@ body {
 
 .btn-search {
    /* box-shadow: 0px 0px 10px 5px var(--secondary); */
-   margin: 10px;
+   margin: 10px 10px 0 10px;
    padding: 6px 50px;
 }
 
@@ -126,8 +127,9 @@ body {
    margin-top: 10px;
 }
 /*****************************************************/
+/*****************************************************/
 
-/* POSTS SECTION */
+/* ALL POSTS HTML */
 .posts {
    display: flex;
    flex-direction: row;
@@ -167,6 +169,14 @@ body {
    margin: 0;
 }
 /*****************************************************/
+/*****************************************************/
+
+/*** LOGIN AND SIGN-UP HTML PAGE ***/
+.user-log {
+   border: 1px solid var(--secondary);
+   border-radius: 26px;
+   padding: 25px 0;;
+}
 
 
 /* MEDIA QUERY STYLES  */
