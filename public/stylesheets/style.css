@@ -135,6 +135,18 @@ body {
    display: none;
 }
 
+.tips-entry {
+   background-color: var(--form-background);
+   border-radius: 15px;
+   height: 80%;
+   width: 90%;
+}
+
+.create-btn-div {
+   display: flex;
+   justify-content: center;
+}
+
 /*****************************************************/
 
 /* HERO STYLES */

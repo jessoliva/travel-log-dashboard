@@ -63,8 +63,10 @@
                     placeholder="Describe your journey." />
             </div>
         </section>
+
         <!-- Bottom Part of Create Form Page-->
         <section class="cp-bottom mx-5 row">
+
             <!-- Left Column of inputs - Places and Cost -->
             <div class="col-4 tips-columns">
                 <p class="tips-heading">places</p>
@@ -94,16 +96,15 @@
                     </select>
                 </label>
             </div>
+
             <!-- Middle Column of Inputs - Tips -->
             <div class="col-4 tips-columns">
                 <p class="tips-heading">tips</p>
-                <input class="tip text-center" type="text" id="transportation"
-                    placeholder="Enter Transportation Tips" />
-                <input class="tip text-center mt-2" type="text" id="travel-tips" placeholder="Enter Travel Tips" />
-                <input class="tip text-center mt-2" type="text" id="safety-tips" placeholder="Enter Safety Tips" />
+                <input class="tips-entry text-center" type="text" id="tips"
+                    placeholder="Enter Travel and Safety Tips" />
 
             </div>
-            <!-- Right Column of Inputs - Best For -->
+            <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
             <div class="col-4 tips-columns">
                 <p class="tips-heading">best for</p>
                 <div class="tip text-center my-2">Kid Friendly?
@@ -124,6 +125,10 @@
                         <input type="radio" name="safety-rating" id="safety-rating" value="Ok"> Be Mindful
                         <input type="radio" name="safety-rating" id="safety-rating" value="Dangerous"> Pack a Gun
                     </form>
+                </div>
+                <div class="create-btn-div">
+                    <button id="create-post-btn" type="click" class="mt-5 btn-search btn rounded-pill shadow">Create
+                        Post</button>
                 </div>
             </div>
 
