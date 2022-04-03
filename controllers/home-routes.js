@@ -21,14 +21,13 @@ router.get('/sign-up', (req, res) => {
 
 // render login page
 router.get('/login', (req, res) => {
-
     // check for a session and redirect to the homepage if one exists
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
-    res.render('login');
+    res.render('login',);
 });
 
 // render all posts page
