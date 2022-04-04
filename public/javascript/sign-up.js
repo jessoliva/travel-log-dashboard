@@ -1,24 +1,25 @@
-// reference the form 
-const signUpForm = document.getElementById('sign-up-form');
-
-// get user input values
-const fullName = document.getElementById('name').value.trim();
-const username = document.getElementById('username').value.trim();
-const email = document.getElementById('email').value.trim();
-const password = document.getElementById('password').value.trim();
-
+// reference the sign up button 
 
 async function signupFormHandler(event) {
     event.preventDefault();
-  
+
+    // get user input values
+    // const fullname = document.getElementById('fullname-signup').value.trim();
+    const username = document.getElementById('username-signup').value.trim();
+    const email = document.getElementById('email-signup').value.trim();
+    const password = document.getElementById('password-signup').value.trim();
+
+    console.log('huuiuuu');
+    console.log('this is', username, email, password);
+
     // a conditional to make sure that all fields have values before making the POST request
-    if (name && username && email && password) {
+    if (username && email && password) {
 
         // making request to /api/users route
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
-                fullName,
+                // fullname,
                 username,
                 email,
                 password
@@ -31,10 +32,16 @@ async function signupFormHandler(event) {
         // Now we can add error handling by using the .ok property on the response object
         if (response.ok) {
             console.log('success');
+            document.location.replace('/');
         } 
         else {
             alert(response.statusText);
         }
     }
 };
-signUpForm.addEventListener('submit', signupFormHandler);
+document.querySelector('#sign-up-form').addEventListener('submit', signupFormHandler);
+
+// Jessica Olivares
+// jessoliva
+// hi@gmail.com
+// 1234567

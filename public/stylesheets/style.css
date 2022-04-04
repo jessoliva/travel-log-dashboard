@@ -94,7 +94,7 @@ body {
    align-items: center;
 }
 
-#user-form {
+.user-form {
    /* width: 50%; */
    width: 375px;
 }

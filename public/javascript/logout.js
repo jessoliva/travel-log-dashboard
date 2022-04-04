@@ -1,7 +1,5 @@
-// reference logout button
-const logout = document.getElementById('logout');
-
 async function logout() {
+
     const response = await fetch('/api/users/logout', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' }

@@ -43,54 +43,56 @@ router.get('/:id', (req, res) => {
 // CREATE a user
 router.post('/', (req, res) => {
     User.create({
+        // fullname: req.body.fullname,
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
     })
-        .then(newUserData => {
-            req.session.save(() => {
-                req.session.user_id = newUserData.id;
-                req.session.username = newUserData.username;
-                req.session.loggedIn = true;
+    .then(newUserData => {
+        req.session.save(() => {
+            req.session.user_id = newUserData.id;
+            req.session.username = newUserData.username;
+            req.session.loggedIn = true;
 
-                res.json(newUserData);
-            })
+            res.json(newUserData);
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err)
-        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 });
 
 // LOGIN a user
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     })
-        .then(userData => {
-            if (!userData) {
-                res.status(400).json({ message: "No user with that email address." });
-                return;
-            }
+    .then(userData => {
 
-            // checks if password input matches user's password
-            const validPw = userData.pwCheck(req.body.password);
+        if (!userData) {
+            res.status(400).json({ message: "No user with that username address." });
+            return;
+        }
 
-            if (!validPw) {
-                res.status(400).json({ message: "Incorrect password." });
-                return;
-            }
+        // checks if password input matches user's password
+        const validPw = userData.pwCheck(req.body.password);
 
-            req.session.save(() => {
-                req.session.user_id = userData.id;
-                req.session.username = userData.username;
-                req.session.loggedIn = true;
+        if (!validPw) {
+            res.status(400).json({ message: "Incorrect password." });
+            return;
+        }
 
-                res.json({ userData, message: `You are now logged in as ${userData.username}!` })
-            })
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
+            req.session.loggedIn = true;
+
+            res.json({ userData, message: `You are now logged in as ${userData.username}!` })
         })
+    })
 });
 
 // LOGOUT a user

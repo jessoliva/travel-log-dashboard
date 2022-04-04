@@ -12,11 +12,7 @@ router.get('/', (req, res) => {
 
 // render sign-up page
 router.get('/sign-up', (req, res) => {
-    console.log(req.session);
-    res.render(
-        'sign-up',
-        { loggedIn: req.session.loggedIn }
-    );
+    res.render('sign-up',);
 });
 
 // render login page
