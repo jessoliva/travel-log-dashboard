@@ -68,16 +68,13 @@ router.post('/', (req, res) => {
         location: req.body.location,
         description: req.body.description,
         restaurants: req.body.restaurants,
-        attractions: req.body.attractions,
-        lodging_cost: req.body.lodging_cost,
-        transportation_cost: req.body.transportation_cost,
-        transportation_tips: req.body.transportation_tips,
-        travel_tips: req.body.travel_tips,
-        safety_tips: req.body.safety_tips,
-        pets: req.body.pets,
-        kids: req.body.kids,
-        companion: req.body.companion,
-        safety_rating: req.body.safety_rating,
+        attraction: req.body.attractions,
+        meal_cost: req.body.attractions,
+        hotel_cost: req.body.lodging_cost,
+        tips: req.body.transportation_cost,
+        kid_friendly: req.body.transportation_tips,
+        pet_friendly: req.body.travel_tips,
+        safety_rating: req.body.safety_tips,
         user_id: req.session.user_id
     })
         .then(newPostData => res.json(newPostData))
