@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 // GET all posts
 router.get('/', (req, res) => {
@@ -74,8 +74,8 @@ router.post('/', (req, res) => {
         tips: req.body.tips,
         kid_friendly: req.body.kid_friendly,
         pet_friendly: req.body.pet_friendly,
-        safety_rating: req.body.safety_rating,
-        user_id: req.session.user_id
+        safety_rating: req.body.safety_rating
+        // user_id: req.session.user_id
     })
     .then(newPostData => res.json(newPostData))
     .catch(err => {
