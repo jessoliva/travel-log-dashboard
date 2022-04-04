@@ -11,12 +11,22 @@ router.get('/', (req, res) => {
 
 // render login page
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
 
     res.render('login')
+});
+
+// render sign-up page
+router.get('/signup', (req, res) => {
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('sign-up')
 });
 
 // render all posts page
