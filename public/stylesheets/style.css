@@ -3,6 +3,7 @@
    --primary: #E0CCCB;
    --secondary: #8C5754;
    --tertiary: #e7a9e9;
+   --form-background: ivory;
 }
 
 * {
@@ -12,20 +13,152 @@
 body {
    margin: 0;
    padding: 0;
-   background:var(--primary);
+   background: var(--primary);
 }
+
+/*****************************************************/
+/* Nav Styles */
+
+.posts-nav {
+   position: relative;
+   right: 0px;
+}
+
+.put-border {
+   border: 1px black solid;
+}
+
+/*****************************************************/
+/* Single-Post Styles */
+.single-post-top {
+   background-color: #8c5754;
+   height: 400px;
+
+   border: 1px black solid;
+   border-radius: 15px;
+
+   /* text-align: center;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center; */
+}
+
+.post-photo {
+   background-image: url('./images/background.jpeg');
+   background-size: cover;
+   min-height: 100%;
+   border-radius: 15px;
+}
+
+.single-post-middle {
+   min-height: 150px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+}
+
+.tip {
+   height: 50px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+   width: 90%;
+
+}
+
+.tips-heading {
+   font-style: italic;
+   font-size: 30px;
+   margin-bottom: 0;
+   margin-top: 20px;
+}
+
+
+
+/*****************************************************/
+
+/*****************************************************/
+/* Create-Post Styles */
+.create-post-top {
+   background-color: var(--primary);
+   height: 300px;
+
+   border-radius: 15px;
+
+}
+
+.cp-top-left {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   justify-content: space-between;
+}
+
+.cp-top-right {
+   background-color: var(--form-background);
+   border-radius: 15px;
+   height: 100%;
+   width: 100%;
+}
+
+
+.single-post-middle {
+   min-height: 150px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+}
+
+.file-input {
+   height: 50px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+   width: 90%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.tips-heading {
+   font-style: italic;
+   font-size: 30px;
+   margin-bottom: 0;
+   margin-top: 20px;
+}
+
+
+.hidden {
+   display: none;
+}
+
+.tips-entry {
+   background-color: var(--form-background);
+   border-radius: 15px;
+   height: 80%;
+   width: 90%;
+}
+
+.create-btn-div {
+   display: flex;
+   justify-content: center;
+}
+
 /*****************************************************/
 
 /* HERO STYLES */
 .hero {
-   background:var(--primary);
-   padding: 0.1% 0 0.5% 0;
-   height: 150px;
+   background: var(--primary);
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
+   padding: 0.1% 0 0.5% 0;
+   margin-bottom: 20px;
    z-index: 9999;
 }
 
@@ -61,20 +194,30 @@ body {
    color: black;
    text-decoration: none;
 }
+
 /*****************************************************/
 
 /* MAIN SECTION STYLES */
-.main {
-   height: 80%;
-   display: flex;
-   align-items: center;
-   justify-content: center 
+main {
+   /* display: flex;
+   justify-content: center;
+   align-items: center; */
+   /* background-image: url("./images/background.jpeg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover; */
 }
+
 /*****************************************************/
 
 /* TRAVEL SECTION STYLES */
 .travel {
    text-align: center;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
 }
 
 .travel h1 {
@@ -84,7 +227,7 @@ body {
 }
 
 /* SEARCH SECTION */
-.travel div {
+.search {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
@@ -112,7 +255,7 @@ body {
    color: white;
    background-color: var(--secondary);
    transition: all 0.6s ease-in-out;
-   opacity: 0.5;
+   opacity: 0.75;
 }
 
 .btn-search:not(:hover) {
@@ -122,50 +265,103 @@ body {
    transition: all 0.7s ease-in-out;
 }
 
-.travel p {
-   margin-top: 10px;
-}
 /*****************************************************/
 
-/* POSTS SECTION */
-.posts {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   /* justify-content: space-between; */
-   justify-content: center;
-   align-items: center;
-   margin: 0 auto;
-   padding: 40px 0;
+/* CURRENT WEATHER SECTION STYLES */
+.current {
+   color: white;
+   background: #142529;
+   background-image: radial-gradient(at 40% 20%, hsla(194, 47%, 26%, 1) 0, transparent 50%), radial-gradient(at 80% 0%, #2ea1b8 0, transparent 50%), radial-gradient(at 0% 50%, hsla(195, 61%, 28%, 1) 0, transparent 50%), radial-gradient(at 100% 84%, hsla(196, 45%, 22%, 1) 0, transparent 50%), radial-gradient(at 0% 100%, hsla(194, 74%, 37%, 1) 0, transparent 50%), radial-gradient(at 80% 100%, hsla(193, 68%, 40%, 1) 0, transparent 50%), radial-gradient(at 0% 0%, hsla(195, 57%, 50%, 1) 0, transparent 50%);
+   border-radius: 26px;
+   padding: 20px 20px;
+   margin: 35px 70px 35px 50px;
 }
 
-.post {
+.current h2 {
+   font-size: 30px;
+   padding-bottom: 10px;
+}
+
+.current h3 {
+   font-size: 24px;
+   padding-bottom: 7px;
+}
+
+#currDate,
+#currTime {
+   font-weight: 400;
+   font-size: 23px;
+}
+
+#curr-city,
+#wind,
+#humidity {
+   color: var(--tertiary);
+}
+
+#icon {
+   width: 55%;
+}
+
+.weather-container {
+   width: 180px;
+   height: 90px;
    background: var(--secondary);
-   height: 225px;
-   width: 20%;
    border-radius: 26px;
-   margin: 20px;
+   margin: 5px 10px 0 10px;
+   padding: 10px 20px 0 20px;
+}
+
+.weather-container h3 {
+   padding: 0;
+}
+
+.uv-low {
+   background: rgb(114, 187, 114);
+}
+
+.uv-moderate {
+   background: rgb(240, 185, 82);
+}
+
+.uv-extreme {
+   background: rgb(182, 52, 52);
+}
+
+/*****************************************************/
+
+/* FORECAST WEATHER SECTION */
+.forecast {
+   padding: 35px;
+}
+
+.days {
+   background: #142529;
+   background-image: radial-gradient(at 40% 20%, hsla(194, 47%, 26%, 1) 0, transparent 50%), radial-gradient(at 80% 0%, #2ea1b8 0, transparent 50%), radial-gradient(at 0% 50%, hsla(195, 61%, 28%, 1) 0, transparent 50%), radial-gradient(at 100% 84%, hsla(196, 45%, 22%, 1) 0, transparent 50%), radial-gradient(at 0% 100%, hsla(194, 74%, 37%, 1) 0, transparent 50%), radial-gradient(at 80% 100%, hsla(193, 68%, 40%, 1) 0, transparent 50%), radial-gradient(at 0% 0%, hsla(195, 57%, 50%, 1) 0, transparent 50%);
+   width: 18%;
+   border-radius: 26px;
+   padding: 20px 0;
+   margin: 0 20px;
+}
+
+.days h3 {
+   color: var(--tertiary);
+   font-size: 20px;
+   padding-bottom: 5px;
 }
 
 .img-container {
-   /* background-image: url(./images/background.jpeg); */
+   background: var(--secondary);
    width: 100%;
-   height: 60%;
-   border-radius: 26px 26px 0 0;
-   margin: 0 0 5px 0;
+   padding: 8px 35px 0 35px;
+   margin: 5px 0 15px 0;
 }
 
-.location {
-   font-size: 15px;
-   padding: 0 0 13px 5px;
+.day-humidity {
+   padding-bottom: 0;
    margin: 0;
 }
 
-.title {
-   font-size: 18px;
-   padding-bottom: 13px;
-   margin: 0;
-}
 /*****************************************************/
 
 
@@ -204,4 +400,3 @@ body {
       margin-bottom: 10px;
    }
 }
- 
