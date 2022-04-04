@@ -16,11 +16,12 @@ body {
    padding: 0;
    background: var(--primary);
 }
+
 /************************/
 
 /* HERO STYLES */
 .hero {
-   background:var(--primary);
+   background: var(--primary);
    padding: 0.1% 0 0.5% 0;
    height: 150px;
    display: flex;
@@ -63,6 +64,7 @@ body {
    color: black;
    text-decoration: none;
 }
+
 /************************/
 
 /* MAIN SECTION STYLES */
@@ -70,8 +72,9 @@ body {
    height: 80%;
    display: flex;
    align-items: center;
-   justify-content: center 
+   justify-content: center
 }
+
 /************************/
 
 /* TRAVEL SECTION STYLES */
@@ -128,6 +131,7 @@ body {
 .travel p {
    margin-top: 10px;
 }
+
 /*****************************************************/
 /*****************************************************/
 
@@ -178,8 +182,10 @@ body {
 .user-log {
    border: 1px solid var(--secondary);
    border-radius: 26px;
-   padding: 25px 0;;
+   padding: 25px 0;
+   ;
 }
+
 /*****************************************************/
 /*****************************************************/
 
@@ -228,6 +234,7 @@ body {
    margin-bottom: 0;
    margin-top: 20px;
 }
+
 /*****************************************************/
 /*****************************************************/
 
@@ -296,6 +303,7 @@ body {
    display: flex;
    justify-content: center;
 }
+
 /*****************************************************/
 /*****************************************************/
 
