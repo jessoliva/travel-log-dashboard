@@ -29,7 +29,7 @@ router.get('/signup', (req, res) => {
     res.render('sign-up')
 });
 
-// render all posts page
+// render all-posts page
 router.get('/posts', (req, res) => {
     Post.findAll()
     .then(postData => {
@@ -47,7 +47,7 @@ router.get('/posts', (req, res) => {
     });
 });
 
-// render single
+// render single-post page
 router.get('/posts/:id', (req, res) => {
     Post.findOne()
     .then(postData => {
