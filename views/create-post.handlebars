@@ -1,0 +1,96 @@
+<!-- Top Row of Create Post Page -->
+        <section class="create-post-top row mx-5 mt-5 mb-3">
+            <div class="col-5 cp-top-left">
+                <input class="tip text-center" type="text" id="title" placeholder="Enter Title:" />
+                <input class="tip text-center" type="text" id="location" placeholder="Enter Location:" />
+                <input class="hidden" type="file" id="post-images" />
+                <label class="file-input" for="post-images">Upload Photos</label>
+                <input class="hidden" type="file" id="post-files" />
+                <label class="file-input" for="post-files">Upload Files Related to Your Travel</label>
+
+            </div>
+
+            <div class="col-7">
+                <input class="cp-top-right text-center mt-0" type="text" id="description"
+                    placeholder="Describe your journey." />
+            </div>
+        </section>
+
+        <!-- Bottom Part of Create Form Page-->
+        <section class="cp-bottom mx-5 row">
+
+            <!-- Left Column of inputs - Places and Cost -->
+            <div class="col-4 tips-columns">
+                <p class="tips-heading">places</p>
+                <input class="tip text-center" type="text" id="restaurant" placeholder="Enter Favorite Restaurant" />
+                <input class="tip text-center mt-2" type="text" id="attraction"
+                    placeholder="Enter Favorite Attraction" />
+                <p class="tips-heading">cost</p>
+
+
+                <!-- Drop down for Meal Costs -->
+                <label class="tip text-center" for="meal-cost">Avg Cost per Meal per Person
+                    <select name="meal-cost" id="meal-cost">
+                        <option value="$">Under $10</option>
+                        <option value="$$">$11 – $30</option>
+                        <option value="$$$">$31 – $60</option>
+                        <option value="$$$$">over $61</option>
+                    </select>
+                </label>
+
+                <!-- Drop Down for Hotel Costs -->
+                <label class="tip text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb
+                    <select name="hotel-cost" id="hotel-cost">
+                        <option value="$">Under $70</option>
+                        <option value="$$">$71 – $120</option>
+                        <option value="$$$">$121 – $200</option>
+                        <option value="$$$$">over $201</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- Middle Column of Inputs - Tips -->
+            <div class="col-4 tips-columns">
+                <p class="tips-heading">tips</p>
+                <input class="tips-entry text-center" type="text" id="tips"
+                    placeholder="Enter Travel and Safety Tips" />
+
+            </div>
+            <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
+            <div class="col-4 tips-columns">
+                <p class="tips-heading">best for</p>
+                <div class="tip text-center my-2">Kid Friendly?
+                    <form>
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="yes"> Yes
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="no"> No
+                    </form>
+                </div>
+                <div class="tip text-center mt-0">Pet Friendly?
+                    <form>
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="yes"> Yes
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="no"> No
+                    </form>
+                </div>
+                <div class="tip text-center my-2">Safety Rating?
+                    <form>
+                        <input type="radio" name="safety-rating" id="safety-rating" value="Safe"> Very Safe
+                        <input type="radio" name="safety-rating" id="safety-rating" value="Ok"> Be Mindful
+                        <input type="radio" name="safety-rating" id="safety-rating" value="Dangerous"> Pack a Gun
+                    </form>
+                </div>
+                <div class="create-btn-div">
+                    <button id="create-post-btn" type="click" class="mt-5 btn-search btn rounded-pill shadow">Create
+                        Post</button>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <!-- drop-down select section
+          <div class="h-50 px-3 text-center">
+            <select id="cities" class="w-100 p-2 rounded-pill text-center">
+              <option value="Searched Cities">Searched Cities</option>
+            </select>
+          </div> -->
