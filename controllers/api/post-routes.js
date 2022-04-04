@@ -3,12 +3,27 @@ const { Post, User } = require('../../models');
 
 // GET all posts
 router.get('/', (req, res) => {
-    Post.findAll()
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
+    Post.findAll({
+        order: [['created_at', 'DESC']],
+        include: [
+            {
+                model: Comment,
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['id', 'username']
+            }
+        ]
+    })
+        .then(postData => res.json(postData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
 });
 
 // GET single post
@@ -16,21 +31,34 @@ router.get('/:id', (req, res) => {
     Post.findAll({
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Comment,
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['id', 'username']
+            }
+        ]
     })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({
-                message: "No post found with that ID."
-            });
-            return;
-        }
-        res.json(postData)
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
+        .then(postData => {
+            if (!postData) {
+                res.status(404).json({
+                    message: "No post found with that ID."
+                });
+                return;
+            }
+            res.json(postData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
 });
 
 // CREATE a post
@@ -41,14 +69,11 @@ router.post('/', (req, res) => {
         description: req.body.description,
         restaurants: req.body.restaurants,
         attractions: req.body.attractions,
-        lodging_cost: req.body.lodging_cost,
-        transportation_cost: req.body.transportation_cost,
-        transportation_tips: req.body.transportation_tips,
-        travel_tips: req.body.travel_tips,
-        safety_tips: req.body.safety_tips,
-        pets: req.body.pets,
-        kids: req.body.kids,
-        companion: req.body.companion,
+        meal_cost: req.body.meal_cost,
+        hotel_cost: req.body.hotel_cost,
+        tips: req.body.tips,
+        kid_friendly: req.body.kid_friendly,
+        pet_friendly: req.body.pet_friendly,
         safety_rating: req.body.safety_rating,
         user_id: req.session.user_id
     })

@@ -42,7 +42,7 @@ Post.init(
                 len: [1]
             }
         },
-        attraction: {
+        attractions: {
             type: DataTypes.TEXT,
             allowNull: true,
             validate: {
