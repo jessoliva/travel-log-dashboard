@@ -47,6 +47,19 @@ router.get('/posts', (req, res) => {
     });
 });
 
+// render single
+router.get('/posts/:id', (req, res) => {
+    Post.findOne()
+    .then(postData => {
+        const post = postData.get({ plain: true });
+        res.render('single-post', { post });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
+
 // render create-post page
 router.get('/create', (req, res) => {
     // if (!req.session.loggedIn) {
