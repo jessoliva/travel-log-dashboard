@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- font-awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- google fonts link -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allison&family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <!-- bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- css link -->
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+
+    <title>SunnySkies</title>
+</head>
+
+<body class="vw-100">
+    <!-- hero -->
+    <header class="hero shadow vw-100 sticky-top text-center put-border">
+        <h1>travel.diary</h1>
+        <p>the world is yours to explore</p>
+        <!-- navigation section -->
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                <li>
+                    <a href="/signup">Sign Up</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="posts-nav">
+            <a href="/posts">Back</a>
+            <a href="/post/:id">Next Post</a>
+        </div>
+    </header>
+
+    <main class="vh-100 vw-100 p-0">
+        <!-- Left Side of Top Row of Create Post Page -->
+        <section class="create-post-top row mx-5 mt-5 mb-3">
+            <div class="col-5 cp-top-left">
+                <input class="tip text-center" type="text" id="title" placeholder="Enter Title:" />
+                <input class="tip text-center" type="text" id="location" placeholder="Enter Location:" />
+                <input class="hidden" type="file" id="post-images" />
+                <label class="file-input" for="post-images">Upload Photos</label>
+                <input class="hidden" type="file" id="post-files" />
+                <label class="file-input" for="post-files">Upload Files Related to Your Travel</label>
+            </div>
+
+            <!-- Right Side of Top Row - Describe Journey -->
+            <div class="col-7">
+                <input class="cp-top-right text-center mt-0" type="text" id="description"
+                    placeholder="Describe your journey." />
+            </div>
+        </section>
+
+        <!-- Bottom Part of Create Form Page-->
+        <section class="cp-bottom mx-5 row">
+
+            <!-- Left Column of inputs - Places and Cost -->
+            <div class="col-4 tips-columns">
+                <p class="tips-heading">places</p>
+                <input class="tip text-center" type="text" id="restaurant" placeholder="Enter Favorite Restaurant" />
+                <input class="tip text-center mt-2" type="text" id="attraction"
+                    placeholder="Enter Favorite Attraction" />
+                <p class="tips-heading">cost</p>
+
+
+                <!-- Drop down for Meal Costs -->
+                <label class="tip text-center" for="meal-cost">Avg Cost per Meal per Person
+                    <select name="meal-cost" id="meal-cost">
+                        <option value="$">Under $10</option>
+                        <option value="$$">$11 – $30</option>
+                        <option value="$$$">$31 – $60</option>
+                        <option value="$$$$">over $61</option>
+                    </select>
+                </label>
+
+                <!-- Drop Down for Hotel Costs -->
+                <label class="tip text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb
+                    <select name="hotel-cost" id="hotel-cost">
+                        <option value="$">Under $70</option>
+                        <option value="$$">$71 – $120</option>
+                        <option value="$$$">$121 – $200</option>
+                        <option value="$$$$">over $201</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- Middle Column of Inputs - Tips -->
+            <div class="col-4 tips-columns">
+                <p class="tips-heading">tips</p>
+                <input class="tips-entry text-center" type="text" id="tips"
+                    placeholder="Enter Travel and Safety Tips" />
+
+            </div>
+            <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
+            <div class="col-4 tips-columns">
+                <p class="tips-heading">best for</p>
+                <div class="tip text-center my-2">Kid Friendly?
+                    <form>
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="yes"> Yes
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="no"> No
+                    </form>
+                </div>
+                <div class="tip text-center mt-0">Pet Friendly?
+                    <form>
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="yes"> Yes
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="no"> No
+                    </form>
+                </div>
+                <div class="tip text-center my-2">Safety Rating?
+                    <form>
+                        <input type="radio" name="safety-rating" id="safety-rating" value="safe"> Very Safe
+                        <input type="radio" name="safety-rating" id="safety-rating" value="ok"> Be Mindful
+                        <input type="radio" name="safety-rating" id="safety-rating" value="dangerous"> Pack a Gun
+                    </form>
+                </div>
+                <div class="create-btn-div">
+                    <button id="create-post-btn" type="click" class="mt-5 btn-search btn rounded-pill shadow">Create
+                        Post</button>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <!-- drop-down select section
+          <div class="h-50 px-3 text-center">
+            <select id="cities" class="w-100 p-2 rounded-pill text-center">
+              <option value="Searched Cities">Searched Cities</option>
+            </select>
+          </div> -->
+
+
+
+    </main>
+
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- moment link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- luxon link -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
+    <!-- js link -->
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
