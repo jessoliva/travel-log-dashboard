@@ -37,4 +37,14 @@ router.get('/posts', (req, res) => {
     });
 });
 
+// render create-post page
+router.get('/create', (req, res) => {
+    // if (!req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('create-post', { loggedIn: req.session.loggedIn });
+});
+
 module.exports = router;
