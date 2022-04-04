@@ -1,15 +1,19 @@
+// reference the form 
+const loginForm = document.getElementById('login-form');
+
+// get user input values
+const username = document.getElementById('username').value.trim();
+const password = document.getElementById('password').value.trim();
+
 async function loginFormHandler(event) {
     event.preventDefault();
   
-    const username = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (email && password) {
+    if (username && password) {
         // making request to /api/users/login route
         const response = await fetch('/api/users/login', {
             method: 'post',
             body: JSON.stringify({
-                email,
+                username,
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
@@ -17,9 +21,10 @@ async function loginFormHandler(event) {
     
         if (response.ok) {
             document.location.replace('/');
-        } else {
+        } 
+        else {
             alert(response.statusText);
         }
     }
 }
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+loginForm.addEventListener('submit', loginFormHandler);
