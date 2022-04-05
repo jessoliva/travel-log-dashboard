@@ -54,6 +54,7 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
+// direct associations between Save, User, and Post
 Save.belongsTo(User, {
     foreignKey: 'user_id'
 });
