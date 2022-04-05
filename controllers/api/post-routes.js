@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
+// require multer to upload photos
+const multer = require('multer');
+const { append } = require('express/lib/response');
 
 // GET all posts
 router.get('/', (req, res) => {
@@ -19,11 +22,11 @@ router.get('/', (req, res) => {
             }
         ]
     })
-        .then(postData => res.json(postData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err)
-        });
+    .then(postData => res.json(postData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 });
 
 // GET single post
@@ -46,20 +49,57 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-        .then(postData => {
-            if (!postData) {
-                res.status(404).json({
-                    message: "No post found with that ID."
-                });
-                return;
-            }
-            res.json(postData)
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err)
-        });
+    .then(postData => {
+        if (!postData) {
+            res.status(404).json({
+                message: "No post found with that ID."
+            });
+            return;
+        }
+        res.json(postData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 });
+
+
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, './public/images')
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname)
+//     }
+// })
+// var upload = multer({ storage: storage })
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "../../public/images")
+    },
+    filename: function (req, file, cb) {
+        const parts = file.mimetype.split("/");
+        cb(null, `${file.fieldname}-${Date.now()}.${parts[1]}`)
+    }
+});
+
+const upload = multer({storage});
+
+router.post('/save-image', upload.single('image'), (req, res) => {
+    res.sendFile(`${__dirname}/public/images/${req.file.filename}`);
+});
+
+// app.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
+//     // req.file is the `profile-file` file
+//     // req.body will hold the text fields, if there were any
+//     console.log(JSON.stringify(req.file))
+//     var response = '<a href="/">Home</a><br>'
+//     response += "Files uploaded successfully.<br>"
+//     response += `<img src="${req.file.path}" /><br>`
+//     return res.send(response)
+// });
 
 // CREATE a post
 router.post('/', (req, res) => {

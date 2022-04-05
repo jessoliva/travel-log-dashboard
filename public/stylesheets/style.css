@@ -266,7 +266,7 @@ body {
 }
 
 .file-input {
-   height: 50px;
+   height: 30px;
    border: 1px black solid;
    border-radius: 15px;
    background-color: var(--form-background);
