@@ -1,0 +1,21 @@
+async function saveBtnHandler(event) {
+    event.preventDefault();
+
+    const post_id = window.location.pathname.toString().split('/')[2];
+
+    const response = await fetch('/api/posts/save', {
+        method: 'PUT',
+        body: JSON.stringify({ post_id }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        console.log(response);
+    } else {
+        alert(response.statusText);
+    }
+};
+
+document.querySelector('#save-post-btn').addEventListener('click', saveBtnHandler);

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Save } = require('../../models');
 
 // GET all posts
 router.get('/', (req, res) => {
@@ -19,19 +19,11 @@ router.get('/', (req, res) => {
             }
         ]
     })
-<<<<<<< HEAD
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
-=======
         .then(postData => res.json(postData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err)
         });
->>>>>>> 54aa345707d7a9630b9fff77248b94813258df20
 });
 
 // GET single post
@@ -53,18 +45,6 @@ router.get('/:id', (req, res) => {
                 attributes: ['id', 'username']
             }
         ]
-<<<<<<< HEAD
-    })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({
-                message: "No post found with that ID."
-            });
-            return;
-        }
-        res.json(postData)
-=======
->>>>>>> 54aa345707d7a9630b9fff77248b94813258df20
     })
         .then(postData => {
             if (!postData) {
@@ -102,6 +82,24 @@ router.post('/', (req, res) => {
         .catch(err => {
             console.log(err);
             res.status(500).json(err)
+        });
+});
+
+// SAVE a post
+router.put('/save', (req, res) => {
+        Post.save(
+            {
+                post_id: req.body.post_id,
+                user_id: req.session.user_id
+            },
+            {
+                Save, User, Comment
+            }
+        )
+        .then(savedPostData => res.json(savedPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
 });
 
