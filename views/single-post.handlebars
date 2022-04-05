@@ -5,7 +5,7 @@
         </div>
 
         <div class="col-7">
-            <h2>{{post.title}}</h2>
+            <h2>{{fix_case post.title}}</h2>
             <p>{{post.description}}</p>
         </div>
 
@@ -16,8 +16,8 @@
     <section class="single-post-bottom mx-5 row">
         <div class="col-4 tips-columns">
             <p class="tips-heading">places</p>
-            <div class="display-info">favorite restaurant: {{post.restaurants}}</div>
-            <div class="display-info">best attraction: {{post.attractions}}</div>
+            <div class="display-info">favorite restaurant: {{fix_case post.restaurants}}</div>
+            <div class="display-info">best attraction: {{fix_case post.attractions}}</div>
             <p class="tips-heading">cost</p>
             <div class="display-info">average cost per meal per person: {{post.meal_cost}}</div>
             <div class="display-info">average cost per night in hotel or airbnb: {{post.hotel_cost}}</div>
@@ -42,7 +42,7 @@
             <textarea class="comment-input" id="comment-input" type="text"></textarea>
         </div>
         <div>
-            <button class="comment-btn" id="comment-btn" type="submit">add comment</button>
+            <button class="comment-btn" id="comment-btn" type="click">add comment</button>
         </div>
     </form>
 
@@ -52,5 +52,5 @@
 </div>
 
 {{#if loggedIn}}
-<script src="/javascript/sign-up.js"></script>
+<script src="/javascript/single-post.js"></script>
 {{/if}}
