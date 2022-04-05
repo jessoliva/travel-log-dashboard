@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../models');
+const { User, Post, Comment, Save } = require('../models');
 
 // render homepage
 router.get('/', (req, res) => {
@@ -50,38 +50,6 @@ router.get('/posts', (req, res) => {
 
 // render single-post page
 router.get('/posts/:id', (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        // attributes: [
-        //     'id',
-        //     'title'
-        // ]
-    })
-        .then(postData => {
-            const post = postData.get({ plain: true });
-            console.log(post);
-            res.render('single-post', { post });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-})
-
-// render create-post page
-router.get('/create', (req, res) => {
-    // if (!req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
-
-    res.render('create-post', { loggedIn: req.session.loggedIn });
-});
-
-// render single-post page
-router.get('/posts/:id', (req, res) => {
     Post.findOne()
     .then(postData => {
         const post = postData.get({ plain: true });
@@ -95,12 +63,34 @@ router.get('/posts/:id', (req, res) => {
 
 // render create-post page
 router.get('/create', (req, res) => {
-    // if (!req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
     res.render('create-post', { loggedIn: req.session.loggedIn });
+});
+
+// render saved-posts page
+router.get('/saved-posts', (req, res) => {
+    if (req.session) {
+        Save.findAll({
+            where: {
+                user_id: req.session.user_id
+            }
+        })
+        .then(savedIds => {
+            Post.findAll({
+                where: {
+                    id: savedIds.post_id
+                }
+            })
+            .then(savedPosts => {
+                const posts = savedPosts.map(post => post.get({ plain: true }));
+                res.render('saved-posts', { posts })
+            })
+        })
+    }
 });
 
 module.exports = router;
