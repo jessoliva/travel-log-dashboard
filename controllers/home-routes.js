@@ -28,11 +28,19 @@ router.get('/login', (req, res) => {
 
 // render all posts page
 router.get('/posts', (req, res) => {
-
-    Post.findAll()
+    console.log(req.query);
+    Post.findAll({})
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true }));
-            res.render('all-posts', { posts })
+            let filterResults = posts;
+            if (req.query.city) {
+                filterResults = filterResults.filter(post => post.city.toLowerCase() == req.query.city);
+            }
+            if (req.query.country) {
+                filterResults = filterResults.filter(post => post.country.toLowerCase() == req.query.country);
+            };
+
+            res.render('all-posts', { filterResults })
         })
         .catch(err => {
             console.log(err);
