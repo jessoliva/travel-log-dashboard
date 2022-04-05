@@ -1,8 +1,10 @@
+/*~~~~~ ALL PAGES HTML~~~~~~*/
 /* UNIVERSAL STYLES */
 :root {
    --primary: #E0CCCB;
    --secondary: #8C5754;
    --tertiary: #e7a9e9;
+   --form-background: ivory;
 }
 
 * {
@@ -12,13 +14,14 @@
 body {
    margin: 0;
    padding: 0;
-   background:var(--primary);
+   background: var(--primary);
 }
-/*****************************************************/
+
+/************************/
 
 /* HERO STYLES */
 .hero {
-   background:var(--primary);
+   background: var(--primary);
    padding: 0.1% 0 0.5% 0;
    height: 150px;
    display: flex;
@@ -61,19 +64,181 @@ body {
    color: black;
    text-decoration: none;
 }
-/*****************************************************/
+
+/************************/
 
 /* MAIN SECTION STYLES */
 .main {
    height: 80%;
    display: flex;
    align-items: center;
-   justify-content: center 
+   justify-content: center
 }
 
+/************************/
+
+/* TRAVEL SECTION STYLES */
+.travel {
+   text-align: center;
+}
+
+.travel h1 {
+   font-size: 2vw;
+   width: 100%;
+   padding-bottom: 10px;
+}
+
+/* SEARCH SECTION */
+.travel div {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+}
+
+.user-form {
+   /* width: 50%; */
+   width: 375px;
+}
+
+.form-input {
+   width: 80%;
+   margin: 5px;
+}
+
+.btn-search {
+   /* box-shadow: 0px 0px 10px 5px var(--secondary); */
+   margin: 10px 10px 0 10px;
+   padding: 6px 50px;
+}
+
+.btn-search:hover {
+   font-weight: bold;
+   color: white;
+   background-color: var(--secondary);
+   transition: all 0.6s ease-in-out;
+   opacity: 0.5;
+}
+
+.btn-search:not(:hover) {
+   font-weight: bold;
+   color: white;
+   background-color: var(--secondary);
+   transition: all 0.7s ease-in-out;
+}
+
+.travel p {
+   margin-top: 10px;
+}
 
 /*****************************************************/
-/* Create-Post Styles */
+/*****************************************************/
+
+/*~~~~~~ ALL POSTS HTML ~~~~~~*/
+.posts {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   /* justify-content: space-between; */
+   justify-content: center;
+   align-items: center;
+   margin: 0 auto;
+   padding: 40px 0;
+}
+
+.post {
+   background: var(--secondary);
+   height: 225px;
+   width: 20%;
+   border-radius: 26px;
+   margin: 20px;
+}
+
+.img-container {
+   /* background-image: url(./images/background.jpeg); */
+   width: 100%;
+   height: 60%;
+   border-radius: 26px 26px 0 0;
+   margin: 0 0 5px 0;
+}
+
+.location {
+   font-size: 15px;
+   padding: 0 0 13px 5px;
+   margin: 0;
+}
+
+.title {
+   font-size: 18px;
+   padding-bottom: 13px;
+   margin: 0;
+}
+
+/*****************************************************/
+/*****************************************************/
+
+/*~~~~~~ LOGIN AND SIGN-UP HTML PAGE ~~~~~~*/
+.user-log {
+   border: 1px solid var(--secondary);
+   border-radius: 26px;
+   padding: 25px 0;
+   ;
+}
+
+/*****************************************************/
+/*****************************************************/
+
+/*~~~~~ SINGLE-POST PAGE ~~~~~~*/
+.single-post-top {
+   background-color: #8c5754;
+   height: 400px;
+
+   border: 1px black solid;
+   border-radius: 15px;
+
+   /* text-align: center;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center; */
+}
+
+.post-photo {
+   background-image: url('./images/background.jpeg');
+   background-size: cover;
+   min-height: 100%;
+   border-radius: 15px;
+}
+
+.single-post-middle {
+   min-height: 150px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+}
+
+.tip {
+   height: 50px;
+   border: 1px black solid;
+   border-radius: 15px;
+   background-color: var(--form-background);
+   width: 90%;
+
+}
+
+.tips-heading {
+   font-style: italic;
+   font-size: 30px;
+   margin-bottom: 0;
+   margin-top: 20px;
+}
+
+/*****************************************************/
+/*****************************************************/
+
+/*~~~~~ CREATE-POST HTML ~~~~~*/
 .create-post-top {
    background-color: var(--primary);
    height: 300px;
@@ -123,7 +288,6 @@ body {
    margin-top: 20px;
 }
 
-
 .hidden {
    display: none;
 }
@@ -140,105 +304,8 @@ body {
    justify-content: center;
 }
 
-
 /*****************************************************/
-
-/* TRAVEL SECTION STYLES */
-.travel {
-   text-align: center;
-}
-
-.travel h1 {
-   font-size: 2vw;
-   width: 100%;
-   padding-bottom: 10px;
-}
-
-/* SEARCH SECTION */
-.travel div {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-}
-
-#user-form {
-   width: 50%;
-}
-
-.form-input {
-   width: 80%;
-   margin: 5px;
-}
-
-.btn-search {
-   /* box-shadow: 0px 0px 10px 5px var(--secondary); */
-   margin: 10px;
-   padding: 6px 50px;
-}
-
-.btn-search:hover {
-   font-weight: bold;
-   color: white;
-   background-color: var(--secondary);
-   transition: all 0.6s ease-in-out;
-   opacity: 0.5;
-}
-
-.btn-search:not(:hover) {
-   font-weight: bold;
-   color: white;
-   background-color: var(--secondary);
-   transition: all 0.7s ease-in-out;
-}
-
-.travel p {
-   margin-top: 10px;
-}
 /*****************************************************/
-
-/* POSTS SECTION */
-.posts {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   /* justify-content: space-between; */
-   justify-content: center;
-   align-items: center;
-   margin: 0 auto;
-   padding: 40px 0;
-}
-
-.post {
-   background: var(--secondary);
-   height: 225px;
-   width: 20%;
-   border-radius: 26px;
-   margin: 20px;
-}
-
-.img-container {
-   /* background-image: url(./images/background.jpeg); */
-   width: 100%;
-   height: 60%;
-   border-radius: 26px 26px 0 0;
-   margin: 0 0 5px 0;
-}
-
-.location {
-   font-size: 15px;
-   padding: 0 0 13px 5px;
-   margin: 0;
-}
-
-.title {
-   font-size: 18px;
-   padding-bottom: 13px;
-   margin: 0;
-}
-/*****************************************************/
-
 
 /* MEDIA QUERY STYLES  */
 @media only screen and (max-width: 576px) {
@@ -275,4 +342,3 @@ body {
       margin-bottom: 10px;
    }
 }
- 

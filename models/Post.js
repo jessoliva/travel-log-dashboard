@@ -3,11 +3,11 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Post model
-class Post extends Model {}
+class Post extends Model { }
 
 // create fields/columns for Post model
 Post.init(
-    { 
+    {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -21,12 +21,13 @@ Post.init(
                 len: [1]
             }
         },
-        location: {
+        city: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true
+        },
+        country: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
         description: {
             type: DataTypes.TEXT,
@@ -49,66 +50,31 @@ Post.init(
                 len: [1]
             }
         },
-        lodging_cost: {
-            type: DataTypes.DECIMAL(10,2),
-            allowNull: true,
-            validate: {
-                isNumeric: true
-            }
+        meal_cost: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
-        transportation_cost: {
-            type: DataTypes.DECIMAL(10,2),
-            allowNull: true,
-            validate: {
-                isNumeric: true
-            }
+        hotel_cost: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
-        transportation_tips: {
+        tips: {
             type: DataTypes.TEXT,
             validate: {
                 len: [10]
             }
         },
-        travel_tips: {
-            type: DataTypes.TEXT,
-            validate: {
-                len: [10]
-            }
-        },
-        safety_tips: {
-            type: DataTypes.TEXT,
-            allowNull: true,
-            validate: {
-                len: [10]
-            }
-        },
-        pets: {
+        kid_friendly: {
             type: DataTypes.STRING,
-            allowNull: true,
-            validate: {
-                len: [1]
-            }
+            allowNull: true
         },
-        kids: {
+        pet_friendly: {
             type: DataTypes.STRING,
-            allowNull: true,
-            validate: {
-                len: [1]
-            }
-        },
-        companion: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            validate: {
-                len: [1]
-            }
+            allowNull: true
         },
         safety_rating: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            validate: {
-                isNumeric: true
-            }
+            type: DataTypes.STRING,
+            allowNull: true
         },
         user_id: {
             type: DataTypes.INTEGER,
