@@ -240,6 +240,15 @@ body {
    margin-top: 20px;
 }
 
+.comment-btn {
+   border: none;
+   background: none;
+   font-style: italic;
+   font-weight: bolder;
+   font-size: 28px;
+   color: #68705c;
+}
+
 /*****************************************************/
 /*****************************************************/
 
