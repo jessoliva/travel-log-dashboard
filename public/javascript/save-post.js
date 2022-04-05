@@ -1,6 +1,7 @@
 async function saveBtnHandler(event) {
     event.preventDefault();
 
+    // finds post ID from current post url, since you can only save a post when viewing it
     const post_id = window.location.pathname.toString().split('/')[2];
 
     const response = await fetch('/api/posts/save', {
