@@ -2,27 +2,34 @@ async function postFormHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('#title').value.trim();
-    const location = document.querySelector('#location').value.trim();
+    const city = document.querySelector('#city').value.trim();
+    const country = document.querySelector('#country').value.trim();
     const description = document.querySelector('#description').value.trim();
-    const restaurant = document.querySelector('#restaurant').value.trim();
-    const attraction = document.querySelector('#attraction').trim();
+    const restaurants = document.querySelector('#restaurants').value.trim();
+    const attractions = document.querySelector('#attractions').value.trim();
     const meal_cost = document.querySelector('#meal-cost').value.trim();
     const hotel_cost = document.querySelector('#hotel-cost').value.trim();
     const tips = document.querySelector('#tips').value.trim();
-    const kid_friendly = document.querySelector('#kidFriendly').value.trim();
-    const pet_friendly = document.querySelector('#petFriendly').value.trim();
-    const safety_rating = document.querySelector('#safetyRating').value.trim();
-
-    const post_id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const kid_friendly = document.querySelector('#kid-friendly').value.trim();
+    const pet_friendly = document.querySelector('#pet-friendly').value.trim();
+    const safety_rating = document.querySelector('#safety-rating').value.trim();
 
     if (title) {
         const response = await fetch('/api/posts', {
             method: 'POST',
             body: JSON.stringify({
-                post_id,
-                comment_text
+                title,
+                city,
+                country,
+                description,
+                restaurants,
+                attractions,
+                meal_cost,
+                hotel_cost,
+                tips,
+                kid_friendly,
+                pet_friendly,
+                safety_rating
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -30,7 +37,7 @@ async function postFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.reload();
+            document.location.replace('/posts');
         } else {
             alert(response.statusText);
         }

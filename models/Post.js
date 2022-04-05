@@ -21,12 +21,13 @@ Post.init(
                 len: [1]
             }
         },
-        location: {
+        city: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true
+        },
+        country: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
         description: {
             type: DataTypes.TEXT,

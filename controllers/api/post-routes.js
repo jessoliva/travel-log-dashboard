@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 // GET all posts
 router.get('/', (req, res) => {
@@ -65,7 +65,8 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        location: req.body.location,
+        city: req.body.city,
+        country: req.body.country,
         description: req.body.description,
         restaurants: req.body.restaurants,
         attractions: req.body.attractions,
@@ -77,11 +78,11 @@ router.post('/', (req, res) => {
         safety_rating: req.body.safety_rating,
         user_id: req.session.user_id
     })
-    .then(newPostData => res.json(newPostData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
+        .then(newPostData => res.json(newPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
 });
 
 // UPDATE a post
@@ -91,19 +92,19 @@ router.put('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({
-                message: "No post found with that ID."
-            });
-            return;
-        }
-        res.json(postData)
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
+        .then(postData => {
+            if (!postData) {
+                res.status(404).json({
+                    message: "No post found with that ID."
+                });
+                return;
+            }
+            res.json(postData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
 });
 
 // DELETE a post
@@ -113,19 +114,19 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({
-                message: "No post found with that ID."
-            });
-            return;
-        }
-        res.json(postData)
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
+        .then(postData => {
+            if (!postData) {
+                res.status(404).json({
+                    message: "No post found with that ID."
+                });
+                return;
+            }
+            res.json(postData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
 });
 
 module.exports = router;
