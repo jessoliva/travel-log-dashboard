@@ -23,21 +23,23 @@ router.get('/login', (req, res) => {
         return;
     }
 
-    res.render('login',);
+    res.render('login');
 });
 
 // render all-posts page
 router.get('/posts', (req, res) => {
     console.log(req.query);
-    Post.findAll({
-        include: {
-            model: Comment,
-            include: {
-                model: User,
-                attributes: ['username']
-            }
-        }
-    })
+    Post.findAll(
+    //     {
+    //     include: {
+    //         model: Comment,
+    //         include: {
+    //             model: User,
+    //             attributes: ['username']
+    //         }
+    //     }
+    // }
+    )
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true }));
             let filterResults = posts;
@@ -61,14 +63,14 @@ router.get('/posts/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
-        },
-        include: {
-            model: Comment,
-            include: {
-                model: User,
-                attributes: ['username']
-            }
         }
+        // include: {
+        //     model: Comment,
+        //     include: {
+        //         model: User,
+        //         attributes: ['username']
+        //     }
+        // }
     })
     .then(postData => {
         const post = postData.get({ plain: true });
@@ -91,58 +93,50 @@ router.get('/create', (req, res) => {
 });
 
 // render my-posts
-router.get('my-posts', (req, res) => {
-    if (req.session) {
-        Post.findAll({
-            // finds posts with user_ids matching current session's user_id
-            where: {
-                user_id: req.session.user_id
-            },
-            include: {
-                model: Comment,
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-        })
-        .then(myPosts => {
-            const posts = myPosts.map(post => post.get({ plain: true }));
-            res.render('my-posts', { posts });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
+router.get('/my-posts', (req, res) => {
+    console.log(req.session);
+    // finds posts with user_ids matching current session's user_id
+    const id = parseInt(req.session.user_id);
+    Post.findAll({
+        where: {
+            user_id: id
+        }
+    })
+    .then(myPosts => {
+        const posts = myPosts.map(post => post.get({ plain: true }));
+        res.render('all-posts', { 
+            posts,
+            loggedIn: req.session.loggedIn
         });
-    }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // render saved-posts page
 router.get('/saved-posts', (req, res) => {
     if (req.session) {
         // finds save data matching current session's user_id
+        const currentUser = parseInt(req.session.user_id);
         Save.findAll({
             where: {
-                user_id: req.session.user_id
+                user_id: currentUser
             }
         })
-        .then(savedIds => {
+        .then(saveData => {
             // finds posts using save data post_ids for current user
+            const saveIDs = saveData.map(save => save.get({ plain: true }));
+            console.log(saveIDs);
             Post.findAll({
                 where: {
-                    id: savedIds.post_id
-                },
-                include: {
-                    model: Comment,
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
+                    id: saveIDs.post_id
                 }
             })
             .then(savedPosts => {
                 const posts = savedPosts.map(post => post.get({ plain: true }));
-                res.render('saved-posts', { posts });
+                res.render('all-posts', { posts });
             })
         })
         .catch(err => {
