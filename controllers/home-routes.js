@@ -128,7 +128,6 @@ router.get('/saved-posts', (req, res) => {
         .then(saveData => {
             // finds posts using save data post_ids for current user
             const saveIDs = saveData.map(save => save.get({ plain: true }));
-            console.log(saveIDs);
             Post.findAll({
                 where: {
                     id: saveIDs.post_id
