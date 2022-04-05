@@ -28,6 +28,7 @@ router.get('/login', (req, res) => {
 
 // render all posts page
 router.get('/posts', (req, res) => {
+
     Post.findAll()
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true }));
@@ -52,6 +53,7 @@ router.get('/posts/:id', (req, res) => {
     })
         .then(postData => {
             const post = postData.get({ plain: true });
+            console.log(post);
             res.render('single-post', { post });
         })
         .catch(err => {
