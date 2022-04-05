@@ -29,22 +29,35 @@
     <!-- navigation section -->
     <nav>
       <ul>
+        {{#if home}}
         <li>
           <a href="/">Home</a>
         </li>
+        {{/if}}
         {{#if loggedIn}}
+
+        {{#if createPost}}
         <li>
           <a href="/create">Create Post</a>
         </li>
+        {{/if}}
+
+        {{#if savedPosts}}
         <li>
           <a href="/saved-posts">Saved Posts</a>
         </li>
+        {{/if}}
+
+        {{#if myPosts}}
         <li>
           <a href="/my-posts">My Posts</a>
         </li>
+        {{/if}}
+
         <li>
           <a id="logout" href="/logout">Logout</a>
         </li>
+
         {{else}}
         <li>
           <a href="/login">Login</a>
@@ -54,12 +67,6 @@
         </li>
         {{/if}}
         {{!-- need another if statement when a post is clicked --}}
-        <li>
-          <a href="">Back</a>
-        </li>
-        <li>
-          <a href="contact.html">Next</a>
-        </li>
   </header>
 
   <main class="main p-0">

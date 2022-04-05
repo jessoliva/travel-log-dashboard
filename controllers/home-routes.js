@@ -6,7 +6,12 @@ router.get('/', (req, res) => {
     console.log(req.session);
     res.render(
         'homepage',
-        { loggedIn: req.session.loggedIn }
+        {
+            loggedIn: req.session.loggedIn,
+            createPost: true,
+            savedPosts: true,
+            myPosts: true
+        }
     );
 });
 
@@ -23,7 +28,7 @@ router.get('/login', (req, res) => {
         return;
     }
 
-    res.render('login',);
+    res.render('login', { home: true });
 });
 
 // render all posts page
@@ -40,7 +45,16 @@ router.get('/posts', (req, res) => {
                 filterResults = filterResults.filter(post => post.country.toLowerCase() == req.query.country);
             };
 
-            res.render('all-posts', { filterResults })
+            res.render(
+                'all-posts',
+                {
+                    filterResults,
+                    loggedIn: req.session.loggedIn,
+                    home: true,
+                    createPost: true,
+                    savedPosts: true,
+                    myPosts: true
+                })
         })
         .catch(err => {
             console.log(err);
@@ -62,7 +76,7 @@ router.get('/posts/:id', (req, res) => {
         .then(postData => {
             const post = postData.get({ plain: true });
             console.log(post);
-            res.render('single-post', { post });
+            res.render('single-post', { post, loggedIn: req.session.loggedIn, home: true });
         })
         .catch(err => {
             console.log(err);
@@ -77,7 +91,15 @@ router.get('/create', (req, res) => {
     //     return;
     // }
 
-    res.render('create-post', { loggedIn: req.session.loggedIn });
+    res.render(
+        'create-post',
+        {
+            loggedIn: req.session.loggedIn,
+            home: true,
+            savedPosts: true,
+            myPosts: true
+
+        });
 });
 
 module.exports = router;

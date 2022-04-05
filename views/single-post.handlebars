@@ -6,32 +6,36 @@
 
         <div class="col-7">
             <h2>{{post.title}}</h2>
+            <p>{{post.description}}</p>
         </div>
+
     </section>
-    <section class="single-post-middle mx-5 text-center">
+    {{!-- <section class="single-post-middle mx-5 text-center">
         <p>{{post.description}}</p>
-    </section>
+    </section> --}}
     <section class="single-post-bottom mx-5 row">
         <div class="col-4 tips-columns">
             <p class="tips-heading">places</p>
-            <div class="tip text-center mt-0">{{post.restaurants}}</div>
-            <div class="tip text-center my-2">{{post.attractions}}</div>
+            <div class="display-info">favorite restaurant: {{post.restaurants}}</div>
+            <div class="display-info">best attraction: {{post.attractions}}</div>
             <p class="tips-heading">cost</p>
-            <div class="tip text-center mt-0">{{post.meal_cost}}</div>
-            <div class="tip text-center my-2">{{post.hotel_cost}}</div>
+            <div class="display-info">average cost per meal per person: {{post.meal_cost}}</div>
+            <div class="display-info">average cost per night in hotel or airbnb: {{post.hotel_cost}}</div>
 
         </div>
         <div class="col-4 tips-columns">
-            <p class="tips-heading">tips</p>
-            <div class="tips-entry text-center mt-0">{{post.tips}}</div>
+            <p class="tips-heading">travel tips</p>
+            <div class="display-info">{{post.tips}}</div>
         </div>
 
         <div class="col-4 tips-columns">
             <p class="tips-heading">best for</p>
-            <div class="tip text-center mt-0">Pet Friendly: {{post.pet_friendly}}</div>
-            <div class="tip text-center my-2">Kid Friendly: {{post.kid_friendly}}</div>
-            <div class="tip text-center my-2">Safety Rating: {{post.safety_rating}}</div>
+            <div class="display-info">Pet Friendly: {{post.pet_friendly}}</div>
+            <div class="display-info">Kid Friendly: {{post.kid_friendly}}</div>
+            <div class="display-info">Safety Rating: {{post.safety_rating}}</div>
 
         </div>
     </section>
+    {{!-- {{if loggedIn}}
+    <button type="click"></button> --}}
 </div>
