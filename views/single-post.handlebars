@@ -37,6 +37,20 @@
         </div>
     </section>
     {{#if loggedIn}}
-    <button class="m-5 comment-btn" type="click">comment</button>
+    <form class="comment-form">
+        <div>
+            <textarea class="comment-input" id="comment-input" type="text"></textarea>
+        </div>
+        <div>
+            <button class="comment-btn" id="comment-btn" type="submit">add comment</button>
+        </div>
+    </form>
+
     {{/if}}
+
+    {{> comments post.comments}}
 </div>
+
+{{#if loggedIn}}
+<script src="/javascript/sign-up.js"></script>
+{{/if}}

@@ -72,6 +72,20 @@ router.get('/posts/:id', (req, res) => {
         //     'id',
         //     'title'
         // ]
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
     })
         .then(postData => {
             const post = postData.get({ plain: true });
