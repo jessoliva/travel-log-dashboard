@@ -4,12 +4,13 @@
         <div class="col-5 cp-top-left">
             <input class="tip text-center" type="text" id="title" placeholder="Enter Title:" />
             <input class="tip text-center" type="text" id="city" placeholder="Enter City:" />
+            <input class="tip text-center" type="text" id="state_province" placeholder="Enter State/Province/Region:" />
             <input class="tip text-center" type="text" id="country" placeholder="Enter Country:" />
             <label class="file-input" for="post-images">Upload Photos</label>
-            <form method="post" action="/save-image" enctype="multipart/form-data">           
+            <form method="post" action="/create" enctype="multipart/form-data">           
                 <input type="file" id="post-images" name="image" />
                 <input type="submit" value="Upload" />
-            </form method="post" action="/save-image" enctype="multipart/form-data">
+            </form>
             {{!-- <input class="hidden" type="file" id="post-files" /> --}}
             {{!-- <label class="file-input" for="post-files">Upload Files Related to Your Travel</label> --}}
         </div>
