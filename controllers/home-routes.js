@@ -79,14 +79,36 @@ router.get('/posts/:id', (req, res) => {
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['username'],
             }
         ]
     })
         .then(postData => {
             const post = postData.get({ plain: true });
-            console.log(post);
-            res.render('single-post', { post, loggedIn: req.session.loggedIn, home: true });
+            let savedStatus = true;
+
+            Save.findAll({
+                where: {
+                    user_id: req.session.user_id
+                }
+            })
+            .then(saveData => {
+                const saveIDs = saveData.map(save => save.get({ plian: true }));
+                saveIDs.forEach(saveId => {
+                    if (saveId.post_id == post.id) {
+                        console.log(saveId);
+                        console.log(post);
+                        savedStatus = false;
+                    }
+                });
+
+                res.render('single-post', {
+                    post,
+                    loggedIn: req.session.loggedIn,
+                    home: true,
+                    notSaved: savedStatus
+                });
+            })
         })
         .catch(err => {
             console.log(err);

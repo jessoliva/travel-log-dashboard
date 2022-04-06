@@ -3,9 +3,6 @@
 //     localStorage.setItem("currentSearch", JSON.stringify(newSearch));
 // }
 
-
-
-
 function searchFormHandler(event) {
     event.preventDefault();
     const city = document.querySelector('#city').value.toLowerCase().trim();
@@ -20,4 +17,3 @@ function searchFormHandler(event) {
 
 
 document.querySelector('#user-form').addEventListener('submit', searchFormHandler);
-

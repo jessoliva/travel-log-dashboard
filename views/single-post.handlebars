@@ -37,11 +37,14 @@
 
         </div>
     </section>
+
+    {{#if notSaved}}
     <div class="create-btn-div">
         <button id="save-post-btn" type="click" class="mt-5 btn-search btn rounded-pill shadow">
             Save Post
         </button>
     </div>
+    {{/if}}
 
     {{#if loggedIn}}
     <form class="comment-form">
