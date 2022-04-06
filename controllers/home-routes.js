@@ -83,34 +83,42 @@ router.get('/posts/:id', (req, res) => {
         const post = postData.get({ plain: true });
         let savedStatus = true;
 
-        // if post is owned by current user, save btn doesn't display
-        if (post.user_id == req.session.user_id) {
-            savedStatus = false;
-        }
-
-        Save.findAll({
-            where: {
-                user_id: req.session.user_id
-            }
-        })
-        .then(saveData => {
-            const saveIDs = saveData.map(save => save.get({ plian: true }));
-
-            // if post is already saved by current user, save btn doesn't display
-            saveIDs.forEach(saveId => {
-                if (saveId.post_id == post.id) {
-                    console.log(saveId);
-                    console.log(post);
-                    savedStatus = false;
-                }
-            });
+        if (!req.session.loggedIn) {
             res.render('single-post', {
                 post,
                 loggedIn: req.session.loggedIn,
                 username: req.session.username,
                 notSaved: savedStatus
             });
-        })
+        } else {
+            if (post.user_id == req.session.user_id) {
+                savedStatus = false;
+            }
+        
+            Save.findAll({
+                where: {
+                    user_id: req.session.user_id
+                }
+            })
+            .then(saveData => {
+                const saveIDs = saveData.map(save => save.get({ plian: true }));
+
+                // if post is already saved by current user, save btn doesn't display
+                saveIDs.forEach(saveId => {
+                    if (saveId.post_id == post.id) {
+                        console.log(saveId);
+                        console.log(post);
+                        savedStatus = false;
+                    }
+                });
+                res.render('single-post', {
+                    post,
+                    loggedIn: req.session.loggedIn,
+                    username: req.session.username,
+                    notSaved: savedStatus
+                });
+            })
+        }
     })
     .catch(err => {
         console.log(err);
