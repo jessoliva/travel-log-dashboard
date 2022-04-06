@@ -29,7 +29,12 @@
   <!-- hero -->
   <header class="hero shadow vw-100 sticky-top text-center">
     <h1>travel.diary</h1>
-    <p>the world is yours to explore</p>
+    <p>
+      {{#if username}}
+      <span class="username">{{username}}, </span>
+      {{/if}}
+      the world is yours to explore
+    </p>
     <!-- navigation section -->
     <nav>
       <ul>

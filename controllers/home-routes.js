@@ -4,10 +4,12 @@ const { User, Post, Comment, Save } = require('../models');
 // render homepage
 router.get('/', (req, res) => {
     console.log(req.session);
+
     res.render(
         'homepage',
         {
             loggedIn: req.session.loggedIn,
+            username: req.session.username,
             createPost: true,
             savedPosts: true,
             myPosts: true
@@ -158,8 +160,10 @@ router.get('/my-posts', (req, res) => {
         res.render('my-posts',
             { 
                 posts,
+                loggedIn: req.session.loggedIn,
                 createPost: true,
-                savedPosts: true
+                savedPosts: true,
+                myPosts: true
         });
     })
     .catch(err => {
@@ -192,7 +196,9 @@ router.get('/saved-posts', (req, res) => {
         res.render('saved-posts',
             { 
                 posts,
+                loggedIn: req.session.loggedIn,
                 createPost: true,
+                savedPosts: true,
                 myPosts: true
             });
     })

@@ -64,6 +64,11 @@ body {
    color: black;
    text-decoration: none;
 }
+
+.username {
+   color: var(--secondary);
+   font-size: 18px;
+}
 /************************/
 
 /* MAIN SECTION STYLES */
