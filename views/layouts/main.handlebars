@@ -33,50 +33,49 @@
     <!-- navigation section -->
     <nav>
       <ul>
-        {{!-- {{#if home --}}
         <li>
           <a href="/" class="nav-link">Home</a>
         </li>
-        {{!-- {{/if --}}
         {{#if loggedIn}}
 
-        {{#if createPost}}
-        <li>
-          <a href="/create" class="nav-link">Create Post</a>
-        </li>
-        {{/if}}
+          {{#if createPost}}
+          <li>
+            <a href="/create" class="nav-link">Create Post</a>
+          </li>
+          {{/if}}
 
-        {{#if savedPosts}}
-        <li>
-          <a href="/saved-posts" class="nav-link">Saved Posts</a>
-        </li>
-        {{/if}}
+          {{#if savedPosts}}
+          <li>
+            <a href="/saved-posts" class="nav-link">Saved Posts</a>
+          </li>
+          {{/if}}
 
-        {{#if myPosts}}
-        <li>
-          <a href="/my-posts" class="nav-link">My Posts</a>
-        </li>
-        {{/if}}
+          {{#if myPosts}}
+          <li>
+            <a href="/my-posts" class="nav-link">My Posts</a>
+          </li>
+          {{/if}}
 
-        <li>
-          <a id="logout" href="/logout" class="nav-link">Logout</a>
-        </li>
+          <li>
+            <a id="logout" href="/logout" class="nav-link">Logout</a>
+          </li>
 
         {{else}}
-        <li>
-          <a href="/login" class="nav-link">Login</a>
-        </li>
-        <li>
-          <a href="/sign-up" class="nav-link">Sign Up</a>
-        </li>
+          <li>
+            <a href="/login" class="nav-link">Login</a>
+          </li>
+          <li>
+            <a href="/sign-up" class="nav-link">Sign Up</a>
+          </li>
         {{/if}}
         {{!-- need another if statement when a post is clicked --}}
+      </ul>
+    </nav>
   </header>
 
   <main class="main p-0">
     {{{body}}}
   </main>
-
 
   <!-- jquery link -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -85,5 +84,4 @@
   <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
-
 </html>

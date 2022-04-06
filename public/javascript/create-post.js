@@ -42,7 +42,7 @@ async function postFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/posts');
+            document.location.replace('/my-posts');
         } else {
             alert(response.statusText);
         }

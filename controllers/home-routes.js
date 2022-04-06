@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 // render sign-up page
 router.get('/sign-up', (req, res) => {
-    res.render('sign-up',);
+    res.render('sign-up');
 });
 
 // render login page
@@ -50,7 +50,6 @@ router.get('/posts', (req, res) => {
                 {
                     filterResults,
                     loggedIn: req.session.loggedIn,
-                    home: true,
                     createPost: true,
                     savedPosts: true,
                     myPosts: true
@@ -79,41 +78,49 @@ router.get('/posts/:id', (req, res) => {
             },
             {
                 model: User,
-                attributes: ['username'],
+                attributes: ['id', 'username'],
             }
         ]
     })
-        .then(postData => {
-            const post = postData.get({ plain: true });
-            let savedStatus = true;
+    .then(postData => {
+        const post = postData.get({ plain: true });
+        let savedStatus = true;
 
-            Save.findAll({
-                where: {
-                    user_id: req.session.user_id
-                }
-            })
-            .then(saveData => {
-                const saveIDs = saveData.map(save => save.get({ plian: true }));
-                saveIDs.forEach(saveId => {
-                    if (saveId.post_id == post.id) {
-                        console.log(saveId);
-                        console.log(post);
-                        savedStatus = false;
-                    }
-                });
+        // if post is owned by current user, save btn doesn't display
+        if (post.user_id == req.session.user_id) {
+            savedStatus = false;
+        }
 
-                res.render('single-post', {
-                    post,
-                    loggedIn: req.session.loggedIn,
-                    home: true,
-                    notSaved: savedStatus
-                });
-            })
+        Save.findAll({
+            where: {
+                user_id: req.session.user_id
+            }
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+        .then(saveData => {
+            const saveIDs = saveData.map(save => save.get({ plian: true }));
+
+            // if post is already saved by current user, save btn doesn't display
+            saveIDs.forEach(saveId => {
+                if (saveId.post_id == post.id) {
+                    console.log(saveId);
+                    console.log(post);
+                    savedStatus = false;
+                }
+            });
+            res.render('single-post', {
+                post,
+                loggedIn: req.session.loggedIn,
+                notSaved: savedStatus,
+                createPost: true,
+                savedPosts: true,
+                myPosts: true
+            });
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 })
 
 // render create-post page
@@ -127,10 +134,8 @@ router.get('/create', (req, res) => {
         'create-post',
         {
             loggedIn: req.session.loggedIn,
-            home: true,
             savedPosts: true,
             myPosts: true
-
         });
 });
 
@@ -149,8 +154,13 @@ router.get('/my-posts', (req, res) => {
         }
     })
     .then(postData => {
-        const myPosts = postData.map(post => post.get({ plain: true }));
-        res.render('my-posts', { myPosts });
+        const posts = postData.map(post => post.get({ plain: true }));
+        res.render('my-posts',
+            { 
+                posts,
+                createPost: true,
+                savedPosts: true
+        });
     })
     .catch(err => {
         console.log(err);
@@ -175,11 +185,16 @@ router.get('/saved-posts', (req, res) => {
         }
     })
     .then(saveData => {
-        const savedPosts = saveData.map(save => save.get({ plain: true }));
+        const posts = saveData.map(save => save.get({ plain: true }));
 
         console.log("=========== savedPosts ===============");
-        console.log(savedPosts);
-        res.render('saved-posts', { savedPosts });
+        console.log(posts);
+        res.render('saved-posts',
+            { 
+                posts,
+                createPost: true,
+                myPosts: true
+            });
     })
     .catch(err => {
         console.log(err);
