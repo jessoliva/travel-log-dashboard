@@ -1,11 +1,14 @@
-{{#each savedPosts as |savedPost|}}
-<a href="/posts/{{savedPost.post.id}}" class="post">
-    {{!-- <article class="post"> --}}
-        <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
-        <h3 class="location text-white">{{savedPost.post.location}}</h3>
-        <h3 class="title text-center text-white">{{savedPost.post.title}}</h3>
-        {{!--
-    </article> --}}
-</a>
-{{/each}}
-{{!-- image id --}}
+{{#if savedPosts}}
+    {{#each savedPosts as |savedPost|}}
+    <a href="/posts/{{savedPost.post.id}}" class="post">
+        {{!-- <article class="post"> --}}
+            <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+            <h3 class="location text-white">{{savedPost.post.location}}</h3>
+            <h3 class="title text-center text-white">{{savedPost.post.title}}</h3>
+        {{!-- </article> --}}
+    </a>
+    {{/each}}
+    {{!-- image id --}}
+{{else}}
+    <div>You don't have any posts saved!</div>
+{{/if}}
