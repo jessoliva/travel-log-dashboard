@@ -1,10 +1,4 @@
 
-// var saveSearch = function (newSearch) {
-//     localStorage.setItem("currentSearch", JSON.stringify(newSearch));
-// }
-
-
-
 
 function searchFormHandler(event) {
     event.preventDefault();
@@ -20,4 +14,3 @@ function searchFormHandler(event) {
 
 
 document.querySelector('#user-form').addEventListener('submit', searchFormHandler);
-

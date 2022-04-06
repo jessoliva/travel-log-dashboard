@@ -17,6 +17,8 @@ async function postFormHandler(event) {
     // get name of file uploaded
     const image_name = document.querySelector('#post-images').files[0].name;
 
+    console.log(safety_rating);
+
     if (title) {
         const response = await fetch('/api/posts', {
             method: 'POST',
@@ -42,11 +44,11 @@ async function postFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/posts');
+            document.location.replace('/my-posts');
         } else {
             alert(response.statusText);
         }
     }
-}
+};
 
 document.querySelector('#create-post-btn').addEventListener('click', postFormHandler);

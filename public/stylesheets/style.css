@@ -64,29 +64,47 @@ body {
    color: black;
    text-decoration: none;
 }
-/************************/
 
-/* MAIN SECTION STYLES */
-.main {
-   height: 80%;
-   display: flex;
-   align-items: center;
-   justify-content: center
+.hero a:hover {
+   color: var(--secondary);
+   transition: all 0.6s ease-in-out;
+}
+
+.hero a:not(:hover) {
+   color: black;
+   text-decoration: none;
+   transition: all 0.6s ease-in-out;
+}
+
+.username {
+   color: var(--secondary);
+   font-size: 18px;
 }
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~~ LOGIN/SIGNUP/HOMEPAGE HTML ~~~~~~*/
+/* MAIN SECTION STYLES */
+.home_log_sign {
+   height: 80%;
+   display: flex;
+   align-items: center;
+   justify-content: center
+}
+/************************/
+
 .background {
    background-image: url(../stylesheets/images/background.jpg);
    background-size: cover;
 }
+
 .travel {
    text-align: center;
 }
 
 .travel h1 {
    font-size: 30px;
+   text-shadow: 2px 5px 5px var(--secondary);
    color: white;
    width: 100%;
    padding-bottom: 10px;
@@ -102,7 +120,6 @@ body {
 }
 
 .user-form {
-   /* width: 50%; */
    width: 375px;
 }
 
@@ -118,7 +135,6 @@ body {
 
 /* buttons */
 .btn-search {
-   /* box-shadow: 0px 0px 10px 5px var(--secondary); */
    margin: 10px 10px 0 10px;
    padding: 6px 50px;
 }
@@ -137,25 +153,39 @@ body {
    background-color: var(--secondary);
    transition: all 0.7s ease-in-out;
 }
+
+/*****************************************************/
+/*****************************************************/
+
+/*~~~~~~ LOGIN AND SIGN-UP HTML PAGE ~~~~~~*/
+.user-log {
+   /* border: 1px solid var(--secondary); */
+   border-radius: 26px;
+   padding: 25px 0;
+   ;
+}
+
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~~ ALL POSTS HTML ~~~~~~*/
 .posts {
+   /* height: 100%; */
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-   /* justify-content: space-between; */
    justify-content: center;
    align-items: center;
    margin: 0 auto;
    padding: 40px 0;
+   margin-bottom: 40px;
+   margin-top: 120px;
 }
 
 .post {
    background: var(--secondary);
-   height: 350px;
-   width: 20%;
+   height: 300px;
+   width: 250px;
    border-radius: 26px;
    margin: 20px;
 }
@@ -169,10 +199,14 @@ body {
 }
 
 .img-container img {
-   width:100%;
-   height:100%;
+   width: 100%;
+   height: 100%;
    object-fit: cover;
    border-radius: 26px 26px 0 0;
+}
+
+a {
+   text-decoration: none;
 }
 
 .location {
@@ -194,33 +228,20 @@ body {
    padding-bottom: 0px;
    margin: 0;
 }
-/* 
-.location-info {
-   color: #e59500;
-} */
-
-/*****************************************************/
-/*****************************************************/
-
-/*~~~~~~ LOGIN AND SIGN-UP HTML PAGE ~~~~~~*/
-.user-log {
-   border: 1px solid var(--secondary);
-   border-radius: 26px;
-   padding: 25px 0;
-   ;
-}
 
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~ SINGLE-POST PAGE ~~~~~~*/
+.single {
+   padding: 0 60px 60px 60px;
+}
+
 .single-post-top {
    background-color: #8c5754;
-   height: 400px;
-
+   height: 350px;
    border: 1px black solid;
    border-radius: 15px;
-
    /* text-align: center;
    display: flex;
    flex-direction: row;
@@ -230,18 +251,25 @@ body {
 }
 
 .post-photo {
+   /* background-image: url('./images/background.jpeg'); */
+   background-size: cover;
+   /* min-height: 100%; */
+   border-radius: 15px 0 0 15px;
+}
+
+/* .post-photo {
+   background-image: url('./images/background.jpeg');
    background-size: cover;
    min-height: 100%;
    border-radius: 15px;
-   padding: 0;
-}
+} */
 
-.post-photo img {
+/* .post-photo img {
    width:100%;
    height:100%;
    object-fit: cover;
    border-radius: 15px 0 0 15px;
-}
+}  */
 
 .single-post-middle {
    min-height: 150px;
@@ -250,13 +278,38 @@ body {
    background-color: var(--form-background);
 }
 
+.single-text h2 {
+   color: var(--primary);
+   margin-top: 10px;
+   margin-left: 10px;
+}
+
+.single-text p {
+   color: white;
+   margin-top: 10px;
+   margin-left: 10px;
+}
+
 .tip {
    height: 50px;
    border: 1px black solid;
    border-radius: 15px;
    background-color: var(--form-background);
    width: 90%;
+}
 
+.radio-tip {
+   height: 50px;
+   border: 3px var(--secondary) solid;
+   border-radius: 26px;
+   width: 90%;
+}
+
+.radio-tip-lg {
+   height: 70px;
+   border: 3px var(--secondary) solid;
+   border-radius: 26px;
+   width: 90%;
 }
 
 .tips-heading {
@@ -266,21 +319,10 @@ body {
    margin-top: 20px;
 }
 
-.comment-btn {
-   border: none;
-   background: none;
-   font-style: italic;
-   font-weight: bolder;
-   font-size: 28px;
-   color: #68705c;
-   margin-left: 50px;
-}
-
 .comment-input {
    background-color: var(--form-background);
    border: none;
    border-radius: 15px;
-   margin-left: 50px;
    width: 30%;
    margin-top: 50px;
    height: 110px;
@@ -304,16 +346,71 @@ body {
    font-weight: bold;
 }
 
+.display-info {
+   color: var(--secondary);
+}
+
+.places {
+   padding-top: 16px;   
+   border: 1px solid var(--secondary);
+   border-radius: 15px;
+}
+
+.tips-columns {
+   padding: 0 50px;
+}
+
+/* buttons */
+.btn-save {
+   margin: 10px 10px 0 10px;
+   padding: 6px 30px;
+}
+
+.btn-save:hover {
+   font-weight: bold;
+   color: white;
+   background-color: var(--secondary);
+   transition: all 0.6s ease-in-out;
+   opacity: 0.5;
+}
+
+.btn-save:not(:hover) {
+   font-weight: bold;
+   color: white;
+   background-color: var(--primary);
+   transition: all 0.7s ease-in-out;
+}
+
+/* .comment-btn {
+   border: none;
+   background: none;
+   font-style: italic;
+   font-weight: bolder;
+   font-size: 28px;
+   color: #68705c;
+   margin-left: 50px;
+} */
+
+.fa-heart {
+   color: var(--secondary);
+}
+
+.fa-heart:hover {
+   color: var(--primary);
+}
+
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~ CREATE-POST HTML ~~~~~*/
+.create-post {
+   padding: 10px 60px 80px 60px;
+}
+
 .create-post-top {
    background-color: var(--primary);
    height: 300px;
-
    border-radius: 15px;
-
 }
 
 .cp-top-left {
@@ -328,8 +425,8 @@ body {
    border-radius: 15px;
    height: 100%;
    width: 100%;
+   vertical-align: text-top;
 }
-
 
 .single-post-middle {
    min-height: 150px;
@@ -343,17 +440,24 @@ body {
    border: 1px black solid;
    border-radius: 15px;
    background-color: var(--form-background);
-   width: 90%;
+   width: 35%;
+   margin: 5px;
+   padding: 5px;
    display: flex;
    justify-content: center;
    align-items: center;
+}
 
+.tip-create {
+   width: 80%;
+   margin: 5px;
+   background-color: var(--form-background);
 }
 
 .tips-heading {
    font-style: italic;
-   font-size: 30px;
-   margin-bottom: 0;
+   font-size: 25px;
+   margin-bottom: 5px;
    margin-top: 20px;
 }
 
@@ -366,6 +470,7 @@ body {
    border-radius: 15px;
    height: 80%;
    width: 90%;
+   margin: 5px;
 }
 
 .create-btn-div {
@@ -377,6 +482,51 @@ body {
    border: 1px solid red;
 }
 
+.tips-label {
+   color: var(--secondary);
+   font-size: 15px;
+}
+
+/* select {
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+   background-position: right 0.5rem center;
+   background-repeat: no-repeat;
+   background-size: 1.5em 1.5em;
+   padding-right: 2.5rem;
+   -webkit-print-color-adjust: exact;
+} */
+
+.select-drop {
+   background-color: var(--form-background);
+   padding: 4px 10px;
+   border-radius: 26px;
+}
+
+.image-upload {
+   margin: 5px;
+}
+
+/* buttons */
+.btn-upload {
+   /* box-shadow: 0px 0px 10px 5px var(--secondary); */
+   margin: 5px;
+   padding: 6px 30px;
+}
+
+.btn-upload:hover {
+   font-weight: bold;
+   color: white;
+   background-color: var(--secondary);
+   transition: all 0.6s ease-in-out;
+   opacity: 0.5;
+}
+
+.btn-upload:not(:hover) {
+   font-weight: bold;
+   color: white;
+   background-color: var(--secondary);
+   transition: all 0.7s ease-in-out;
+}
 /*****************************************************/
 /*****************************************************/
 
