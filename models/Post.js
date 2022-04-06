@@ -23,11 +23,24 @@ Post.init(
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: true
+            validate: {
+                len: [1]
+            }
+        },
+        state_province: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
         },
         country: {
             type: DataTypes.STRING,
-            allowNull: true
+            validate: {
+                len: [1]
+            }
+        },
+        image_name: {
+            type: DataTypes.STRING,
         },
         description: {
             type: DataTypes.TEXT,
@@ -60,6 +73,7 @@ Post.init(
         },
         tips: {
             type: DataTypes.TEXT,
+            allowNull: true,
             validate: {
                 len: [10]
             }
