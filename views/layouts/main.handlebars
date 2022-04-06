@@ -43,22 +43,37 @@
         </li>
         {{#if loggedIn}}
 
+          <!-- createPost -->
           {{#if createPost}}
-          <li>
-            <a href="/create" class="nav-link">Create Post</a>
-          </li>
+            <li>
+              <span class="current-page">Create Post</span>
+            </li>
+          {{else}}
+            <li>
+              <a href="/create" class="nav-link">Create Post</a>
+            </li>
           {{/if}}
 
+          <!-- savedPosts -->
           {{#if savedPosts}}
-          <li>
-            <a href="/saved-posts" class="nav-link">Saved Posts</a>
-          </li>
+            <li>
+              <span class="current-page">Saved Posts</span>
+            </li>
+          {{else}}
+            <li>
+              <a href="/saved-posts" class="nav-link">Saved Posts</a>
+            </li>
           {{/if}}
 
+          <!-- myPosts -->
           {{#if myPosts}}
-          <li>
-            <a href="/my-posts" class="nav-link">My Posts</a>
-          </li>
+            <li>
+              <span class="current-page">My Posts</span>
+            </li>
+          {{else}}
+            <li>
+              <a href="/my-posts" class="nav-link">My Posts</a>
+            </li>
           {{/if}}
 
           <li>

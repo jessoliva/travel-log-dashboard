@@ -9,10 +9,7 @@ router.get('/', (req, res) => {
         'homepage',
         {
             loggedIn: req.session.loggedIn,
-            username: req.session.username,
-            createPost: true,
-            savedPosts: true,
-            myPosts: true
+            username: req.session.username
         }
     );
 });
@@ -52,9 +49,7 @@ router.get('/posts', (req, res) => {
                 {
                     filterResults,
                     loggedIn: req.session.loggedIn,
-                    createPost: true,
-                    savedPosts: true,
-                    myPosts: true
+                    username: req.session.username
                 })
         })
         .catch(err => {
@@ -112,10 +107,8 @@ router.get('/posts/:id', (req, res) => {
             res.render('single-post', {
                 post,
                 loggedIn: req.session.loggedIn,
-                notSaved: savedStatus,
-                createPost: true,
-                savedPosts: true,
-                myPosts: true
+                username: req.session.username,
+                notSaved: savedStatus
             });
         })
     })
@@ -136,8 +129,8 @@ router.get('/create', (req, res) => {
         'create-post',
         {
             loggedIn: req.session.loggedIn,
-            savedPosts: true,
-            myPosts: true
+            username: req.session.username,
+            createPost: true
         });
 });
 
@@ -161,8 +154,7 @@ router.get('/my-posts', (req, res) => {
             { 
                 posts,
                 loggedIn: req.session.loggedIn,
-                createPost: true,
-                savedPosts: true,
+                username: req.session.username,
                 myPosts: true
         });
     })
@@ -197,9 +189,8 @@ router.get('/saved-posts', (req, res) => {
             { 
                 posts,
                 loggedIn: req.session.loggedIn,
-                createPost: true,
-                savedPosts: true,
-                myPosts: true
+                username: req.session.username,
+                savedPosts: true
             });
     })
     .catch(err => {

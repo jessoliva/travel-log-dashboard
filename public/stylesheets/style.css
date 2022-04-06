@@ -67,7 +67,13 @@ body {
 
 .username {
    color: var(--secondary);
-   font-size: 18px;
+   font-size: 17px;
+}
+
+.current-page {
+   color: var(--secondary);
+   font-weight: bold;
+   font-size: 17px;
 }
 /************************/
 
