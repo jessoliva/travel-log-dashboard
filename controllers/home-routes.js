@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../models');
+const { User, Post, Comment, Save } = require('../models');
 
 // render homepage
 router.get('/', (req, res) => {
@@ -28,13 +28,13 @@ router.get('/login', (req, res) => {
         return;
     }
 
-    res.render('login', { home: true });
+    res.render('login');
 });
 
-// render all posts page
+// render all-posts page
 router.get('/posts', (req, res) => {
     console.log(req.query);
-    Post.findAll({})
+    Post.findAll()
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true }));
             let filterResults = posts;
@@ -68,10 +68,6 @@ router.get('/posts/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        // attributes: [
-        //     'id',
-        //     'title'
-        // ]
         include: [
             {
                 model: Comment,
@@ -100,10 +96,10 @@ router.get('/posts/:id', (req, res) => {
 
 // render create-post page
 router.get('/create', (req, res) => {
-    // if (!req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
     res.render(
         'create-post',
@@ -114,6 +110,55 @@ router.get('/create', (req, res) => {
             myPosts: true
 
         });
+});
+
+// render my-posts
+router.get('/my-posts', (req, res) => {
+    console.log(req.session);
+    // finds posts with user_ids matching current session's user_id
+    const id = parseInt(req.session.user_id);
+    Post.findAll({
+        where: {
+            user_id: id
+        }
+    })
+    .then(postData => {
+        const myPosts = postData.map(post => post.get({ plain: true }));
+        res.render('my-posts', { myPosts });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+// render saved-posts page
+router.get('/saved-posts', (req, res) => {
+    if (!req.session) {
+        res.redirect('/');
+        return;
+    }
+
+    // finds save data with user_id matching current session's user ID
+    Save.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        include: {
+            model: Post
+        }
+    })
+    .then(saveData => {
+        const savedPosts = saveData.map(save => save.get({ plain: true }));
+
+        console.log("=========== savedPosts ===============");
+        console.log(savedPosts);
+        res.render('saved-posts', { savedPosts });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;

@@ -47,6 +47,6 @@ async function postFormHandler(event) {
             alert(response.statusText);
         }
     }
-}
+};
 
 document.querySelector('#create-post-btn').addEventListener('click', postFormHandler);

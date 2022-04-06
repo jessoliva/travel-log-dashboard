@@ -1,0 +1,11 @@
+{{#each myPosts as |post|}}
+<a href="/posts/{{id}}" class="post">
+    {{!-- <article class="post"> --}}
+        <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+        <h3 class="location text-white">{{location}}</h3>
+        <h3 class="title text-center text-white">{{title}}</h3>
+        {{!--
+    </article> --}}
+</a>
+{{/each}}
+{{!-- image id --}}

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Save } = require('../../models');
 
 // GET all posts
 router.get('/', (req, res) => {
@@ -85,6 +85,24 @@ router.post('/', (req, res) => {
         console.log(err);
         res.status(500).json(err)
     });
+});
+
+// SAVE a post
+router.put('/save', (req, res) => {
+        Post.save(
+            {
+                post_id: req.body.post_id,
+                user_id: req.session.user_id
+            },
+            {
+                Save, User, Comment
+            }
+        )
+        .then(savedPostData => res.json(savedPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // UPDATE a post

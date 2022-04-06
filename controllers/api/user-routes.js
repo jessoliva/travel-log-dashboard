@@ -175,13 +175,21 @@ router.post('/', (req, res) => {
 // LOGIN a user
 router.post('/login', (req, res) => {
     User.findOne({
-        wher: {
+        where: {
             email: req.body.email
         }
     })
     .then(userData => {
         if (!userData) {
             res.status(400).json({ message: "No user with that email address."});
+            return;
+        }
+
+        // checks if password input matches user's password
+        const validPw = userData.pwCheck(req.body.password);
+
+        if (!validPw) {
+            res.status(400).json({ message: "Incorrect password."});
             return;
         }
 
