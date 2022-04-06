@@ -23,11 +23,24 @@ Post.init(
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: true
+            validate: {
+                len: [1]
+            }
+        },
+        state_province: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
         },
         country: {
             type: DataTypes.STRING,
-            allowNull: true
+            validate: {
+                len: [1]
+            }
+        },
+        image_name: {
+            type: DataTypes.STRING,
         },
         description: {
             type: DataTypes.TEXT,
@@ -38,43 +51,27 @@ Post.init(
         },
         restaurants: {
             type: DataTypes.TEXT,
-            allowNull: true,
-            validate: {
-                len: [1]
-            }
         },
         attractions: {
             type: DataTypes.TEXT,
-            allowNull: true,
-            validate: {
-                len: [1]
-            }
         },
         meal_cost: {
             type: DataTypes.STRING,
-            allowNull: true
         },
         hotel_cost: {
             type: DataTypes.STRING,
-            allowNull: true
         },
         tips: {
             type: DataTypes.TEXT,
-            validate: {
-                len: [10]
-            }
         },
         kid_friendly: {
             type: DataTypes.STRING,
-            allowNull: true
         },
         pet_friendly: {
             type: DataTypes.STRING,
-            allowNull: true
         },
         safety_rating: {
             type: DataTypes.STRING,
-            allowNull: true
         },
         user_id: {
             type: DataTypes.INTEGER,

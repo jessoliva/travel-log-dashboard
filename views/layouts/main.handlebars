@@ -22,6 +22,10 @@
 
 <body class="vw-100 vh-100">
 
+{{#if createPost}}
+<body class="vw-100 vh-100 background">
+{{/if}}
+
   <!-- hero -->
   <header class="hero shadow vw-100 sticky-top text-center">
     <h1>travel.diary</h1>
@@ -29,11 +33,11 @@
     <!-- navigation section -->
     <nav>
       <ul>
-        {{#if home}}
+        {{!-- {{#if home --}}
         <li>
           <a href="/" class="nav-link">Home</a>
         </li>
-        {{/if}}
+        {{!-- {{/if --}}
         {{#if loggedIn}}
 
         {{#if createPost}}
@@ -72,6 +76,7 @@
   <main class="main p-0">
     {{{body}}}
   </main>
+
 
   <!-- jquery link -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
