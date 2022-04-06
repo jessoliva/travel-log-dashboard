@@ -114,7 +114,11 @@ router.get('/create', (req, res) => {
 
 // render my-posts
 router.get('/my-posts', (req, res) => {
-    console.log(req.session);
+    if (!req.session) {
+        res.redirect('/');
+        return;
+    }
+
     // finds posts with user_ids matching current session's user_id
     const id = parseInt(req.session.user_id);
     Post.findAll({
