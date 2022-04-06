@@ -12,7 +12,7 @@ Travel.Diary is a place where you can share stories, tips, and info about your t
 
 A user can search for and view posts from fellow travelers based on destinations.
 
-Create a free account so that you may add you own stories, and save posts that you come across to refer back to when you go on your next adventure!
+Create a free account so that you may add you own stories, comment on posts, and save the posts that you come across to refer back to when you go on your next adventure!
 
 The world is yours to explore...
 
