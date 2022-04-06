@@ -20,6 +20,13 @@ const sess = {
   })
 };
 
+// UPLOAD IMAGES START
+// require upload function for multer
+const upload = require('./cont-middleware/upload');
+
+app.post('/create', upload.single('image'), (req, res) => {});
+// UPLOAD IMAGES END
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
