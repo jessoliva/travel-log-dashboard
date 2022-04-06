@@ -102,12 +102,9 @@ router.get('/my-posts', (req, res) => {
             user_id: id
         }
     })
-    .then(myPosts => {
-        const posts = myPosts.map(post => post.get({ plain: true }));
-        res.render('all-posts', { 
-            posts,
-            loggedIn: req.session.loggedIn
-        });
+    .then(postData => {
+        const myPosts = postData.map(post => post.get({ plain: true }));
+        res.render('my-posts', { myPosts });
     })
     .catch(err => {
         console.log(err);
@@ -117,32 +114,31 @@ router.get('/my-posts', (req, res) => {
 
 // render saved-posts page
 router.get('/saved-posts', (req, res) => {
-    if (req.session) {
-        // finds save data matching current session's user_id
-        const currentUser = parseInt(req.session.user_id);
-        Save.findAll({
-            where: {
-                user_id: currentUser
-            }
-        })
-        .then(saveData => {
-            // finds posts using save data post_ids for current user
-            const saveIDs = saveData.map(save => save.get({ plain: true }));
-            Post.findAll({
-                where: {
-                    id: saveIDs.post_id
-                }
-            })
-            .then(savedPosts => {
-                const posts = savedPosts.map(post => post.get({ plain: true }));
-                res.render('all-posts', { posts });
-            })
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    if (!req.session) {
+        res.redirect('/');
+        return;
     }
+
+    // finds save data with user_id matching current session's user ID
+    Save.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        include: {
+            model: Post
+        }
+    })
+    .then(saveData => {
+        const savedPosts = saveData.map(save => save.get({ plain: true }));
+
+        console.log("=========== savedPosts ===============");
+        console.log(savedPosts);
+        res.render('saved-posts', { savedPosts });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;
