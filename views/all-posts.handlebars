@@ -1,0 +1,11 @@
+{{#each filterResults as |post|}}
+<a href="/posts/{{id}}" class="post">
+
+    <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
+    <h3 class="title text-center text-white">{{fix_case title}}</h3>
+    <h3 class="title text-center location-info">{{fix_case city}}</h3>
+    <h3 class="title text-center location-info">{{fix_case country}}</h3>
+
+</a>
+{{/each}}
+{{!-- image id --}}
