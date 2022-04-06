@@ -1,7 +1,10 @@
 {{#each posts as |post|}}
 <article class="post">
-    <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
-    <h3 class="location text-white">{{location}}</h3>
+    <div class="img-container">
+        <img src="../images/{{image_name}}" />
+    </div>
+    <h3 class="location text-white">{{city}}, {{state_province}}</h3>
+    <h3 class="country text-white">{{country}}</h3>
     <h3 class="title text-center text-white">{{title}}</h3>
 </article>
 {{/each}}
