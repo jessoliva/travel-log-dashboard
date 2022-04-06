@@ -54,4 +54,21 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
+// direct associations between Save, User, and Post
+Save.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Save.belongsTo(Post, {
+  foreignKey: 'post_id'
+});
+
+User.hasMany(Save, {
+  foreignKey: 'user_id'
+});
+
+Post.hasMany(Save, {
+  foreignKey: 'post_id'
+});
+
 module.exports = { User, Post, Save, Comment };

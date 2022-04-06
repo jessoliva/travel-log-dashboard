@@ -22,44 +22,60 @@
 
 <body class="vw-100 vh-100">
 
+{{#if createPost}}
+<body class="vw-100 vh-100 background">
+{{/if}}
+
   <!-- hero -->
   <header class="hero shadow vw-100 sticky-top text-center">
     <h1>travel.diary</h1>
-    <p>the world is yours to explore</p>
+    <p>
+      {{#if username}}
+      <span class="username">{{username}}, </span>
+      {{/if}}
+      the world is yours to explore
+    </p>
     <!-- navigation section -->
     <nav>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a href="/" class="nav-link">Home</a>
         </li>
         {{#if loggedIn}}
-        <li>
-          <a href="/create">Create Post</a>
-        </li>
-        <li>
-          <a href="/saved-posts">Saved Posts</a>
-        </li>
-        <li>
-          <a href="/my-posts">My Posts</a>
-        </li>
-        <li>
-          <a id="logout" href="/logout">Logout</a>
-        </li>
+
+          {{#if createPost}}
+          <li>
+            <a href="/create" class="nav-link">Create Post</a>
+          </li>
+          {{/if}}
+
+          {{#if savedPosts}}
+          <li>
+            <a href="/saved-posts" class="nav-link">Saved Posts</a>
+          </li>
+          {{/if}}
+
+          {{#if myPosts}}
+          <li>
+            <a href="/my-posts" class="nav-link">My Posts</a>
+          </li>
+          {{/if}}
+
+          <li>
+            <a id="logout" href="/logout" class="nav-link">Logout</a>
+          </li>
+
         {{else}}
-        <li>
-          <a href="/login">Login</a>
-        </li>
-        <li>
-          <a href="/sign-up">Sign Up</a>
-        </li>
+          <li>
+            <a href="/login" class="nav-link">Login</a>
+          </li>
+          <li>
+            <a href="/sign-up" class="nav-link">Sign Up</a>
+          </li>
         {{/if}}
         {{!-- need another if statement when a post is clicked --}}
-        <li>
-          <a href="">Back</a>
-        </li>
-        <li>
-          <a href="contact.html">Next</a>
-        </li>
+      </ul>
+    </nav>
   </header>
 
   <main class="main p-0">
@@ -73,5 +89,4 @@
   <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
-
 </html>

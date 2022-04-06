@@ -16,7 +16,6 @@ body {
    padding: 0;
    background: var(--primary);
 }
-
 /************************/
 
 /* HERO STYLES */
@@ -34,15 +33,16 @@ body {
 
 .hero h1 {
    font-family: 'Allison';
-   font-size: 4vw;
+   font-size: 45px;
    text-align: center;
    width: 100%;
    margin-bottom: 0;
 }
 
 .hero p {
-   font-size: 1vw;
+   font-size: 15px;
    width: 100%;
+   margin-bottom: 0;
 }
 
 .hero ul {
@@ -65,6 +65,10 @@ body {
    text-decoration: none;
 }
 
+.username {
+   color: var(--secondary);
+   font-size: 18px;
+}
 /************************/
 
 /* MAIN SECTION STYLES */
@@ -74,16 +78,21 @@ body {
    align-items: center;
    justify-content: center
 }
+/*****************************************************/
+/*****************************************************/
 
-/************************/
-
-/* TRAVEL SECTION STYLES */
+/*~~~~~~ LOGIN/SIGNUP/HOMEPAGE HTML ~~~~~~*/
+.background {
+   background-image: url(../stylesheets/images/background.jpg);
+   background-size: cover;
+}
 .travel {
    text-align: center;
 }
 
 .travel h1 {
-   font-size: 2vw;
+   font-size: 30px;
+   color: white;
    width: 100%;
    padding-bottom: 10px;
 }
@@ -107,6 +116,12 @@ body {
    margin: 5px;
 }
 
+.travel p {
+   color: white;
+   margin-top: 10px;
+}
+
+/* buttons */
 .btn-search {
    /* box-shadow: 0px 0px 10px 5px var(--secondary); */
    margin: 10px 10px 0 10px;
@@ -127,11 +142,6 @@ body {
    background-color: var(--secondary);
    transition: all 0.7s ease-in-out;
 }
-
-.travel p {
-   margin-top: 10px;
-}
-
 /*****************************************************/
 /*****************************************************/
 
@@ -149,31 +159,50 @@ body {
 
 .post {
    background: var(--secondary);
-   height: 225px;
+   height: 350px;
    width: 20%;
    border-radius: 26px;
    margin: 20px;
 }
 
 .img-container {
-   /* background-image: url(./images/background.jpeg); */
    width: 100%;
    height: 60%;
    border-radius: 26px 26px 0 0;
    margin: 0 0 5px 0;
+   background-size: cover;
+}
+
+.img-container img {
+   width:100%;
+   height:100%;
+   object-fit: cover;
+   border-radius: 26px 26px 0 0;
 }
 
 .location {
+   color: #e59500;
    font-size: 15px;
-   padding: 0 0 13px 5px;
+   padding: 0 0 5px 5px;
+   margin: 0;
+}
+
+.country {
+   color: #e59500;
+   font-size: 15px;
+   padding: 0 0 18px 5px;
    margin: 0;
 }
 
 .title {
    font-size: 18px;
-   padding-bottom: 13px;
+   padding-bottom: 0px;
    margin: 0;
 }
+/* 
+.location-info {
+   color: #e59500;
+} */
 
 /*****************************************************/
 /*****************************************************/
@@ -193,8 +222,10 @@ body {
 .single-post-top {
    background-color: #8c5754;
    height: 400px;
+
    border: 1px black solid;
    border-radius: 15px;
+
    /* text-align: center;
    display: flex;
    flex-direction: row;
@@ -233,6 +264,44 @@ body {
    margin-top: 20px;
 }
 
+.comment-btn {
+   border: none;
+   background: none;
+   font-style: italic;
+   font-weight: bolder;
+   font-size: 28px;
+   color: #68705c;
+   margin-left: 50px;
+}
+
+.comment-input {
+   background-color: var(--form-background);
+   border: none;
+   border-radius: 15px;
+   margin-left: 50px;
+   width: 30%;
+   margin-top: 50px;
+   height: 110px;
+}
+
+.comment {
+   margin-left: 50px;
+   font-size: 20px;
+   color: #68705c;
+   margin-left: 75px;
+   margin-top: 20px;
+
+}
+
+.meta {
+   font-size: 15px;
+   margin-top: 0px;
+}
+
+.nav-link:hover {
+   font-weight: bold;
+}
+
 /*****************************************************/
 /*****************************************************/
 
@@ -240,7 +309,9 @@ body {
 .create-post-top {
    background-color: var(--primary);
    height: 300px;
+
    border-radius: 15px;
+
 }
 
 .cp-top-left {
@@ -298,6 +369,10 @@ body {
 .create-btn-div {
    display: flex;
    justify-content: center;
+}
+
+.apply-border {
+   border: 1px solid red;
 }
 
 /*****************************************************/

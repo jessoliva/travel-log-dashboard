@@ -1,8 +1,16 @@
-{{#each posts as |post|}}
-<article class="post">
-    <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
-    <h3 class="location text-white">{{location}}</h3>
-    <h3 class="title text-center text-white">{{title}}</h3>
-</article>
+{{#each filterResults as |post|}}
+<a href="/posts/{{id}}" class="post">
+    <div class="img-container">
+        <img src="../images/{{image_name}}" />
+    </div>
+    <h3 class="location">{{fix_case city}}, {{fix_case state_province}}</h3>
+    <h3 class="country">{{fix_case country}}</h3>
+    <h3 class="title text-center text-white">{{fix_case title}}</h3>
+
+    {{!-- <h3 class="title text-center text-white">fix_case city, fix_case state_province</h3>
+    <h3 class="title text-center location-info">fix_case country</h3>
+    <h3 class="title text-center location-info">fix_case title</h3> --}}
+
+</a>
 {{/each}}
 {{!-- image id --}}
