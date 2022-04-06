@@ -84,45 +84,54 @@ router.get('/posts/:id', (req, res) => {
             }
         ]
     })
-    .then(postData => {
-        const post = postData.get({ plain: true });
-        let savedStatus = true;
+        .then(postData => {
+            const post = postData.get({ plain: true });
+            let savedStatus = true;
 
-        // if post is owned by current user, save btn doesn't display
-        if (post.user_id == req.session.user_id) {
-            savedStatus = false;
-        }
-
-        Save.findAll({
-            where: {
-                user_id: req.session.user_id
-            }
-        })
-        .then(saveData => {
-            const saveIDs = saveData.map(save => save.get({ plian: true }));
-
-            // if post is already saved by current user, save btn doesn't display
-            saveIDs.forEach(saveId => {
-                if (saveId.post_id == post.id) {
-                    console.log(saveId);
-                    console.log(post);
+            // if post is owned by current user, save btn doesn't display
+            if (!req.session.loggedIn) {
+                res.render('single-post', {
+                    post,
+                    loggedIn: req.session.loggedIn,
+                    username: req.session.username,
+                    home: true,
+                });
+            } else {
+                if (post.user_id == req.session.user_id) {
                     savedStatus = false;
                 }
-            });
-            res.render('single-post', {
-                post,
-                loggedIn: req.session.loggedIn,
-                notSaved: savedStatus,
-                createPost: true,
-                savedPosts: true,
-                myPosts: true
-            });
+
+                Save.findAll({
+                    where: {
+                        user_id: req.session.user_id
+                    }
+                })
+                    .then(saveData => {
+                        const saveIDs = saveData.map(save => save.get({ plain: true }));
+
+                        // if post is already saved by current user, save btn doesn't display
+                        saveIDs.forEach(saveId => {
+                            if (saveId.post_id == post.id) {
+                                console.log(saveId);
+                                console.log(post);
+                                savedStatus = false;
+                            }
+                        });
+                        res.render('single-post', {
+                            post,
+                            loggedIn: req.session.loggedIn,
+                            notSaved: savedStatus,
+                            createPost: true,
+                            savedPosts: true,
+                            myPosts: true
+                        });
+                    })
+            }
         })
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 })
 
 // render create-post page
@@ -150,26 +159,26 @@ router.get('/my-posts', (req, res) => {
 
     // finds posts with user_ids matching current session's user_id
     const id = parseInt(req.session.user_id);
+    console.log(id);
     Post.findAll({
         where: {
             user_id: id
         }
     })
-    .then(postData => {
-        const posts = postData.map(post => post.get({ plain: true }));
-        res.render('my-posts',
-            { 
-                posts,
-                loggedIn: req.session.loggedIn,
-                createPost: true,
-                savedPosts: true,
-                myPosts: true
+        .then(postData => {
+            const posts = postData.map(post => post.get({ plain: true }));
+            res.render('my-posts',
+                {
+                    posts,
+                    loggedIn: req.session.loggedIn,
+                    createPost: true,
+                    savedPosts: true
+                });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 
 // render saved-posts page
@@ -188,24 +197,23 @@ router.get('/saved-posts', (req, res) => {
             model: Post
         }
     })
-    .then(saveData => {
-        const posts = saveData.map(save => save.get({ plain: true }));
+        .then(saveData => {
+            const posts = saveData.map(save => save.get({ plain: true }));
 
-        console.log("=========== savedPosts ===============");
-        console.log(posts);
-        res.render('saved-posts',
-            { 
-                posts,
-                loggedIn: req.session.loggedIn,
-                createPost: true,
-                savedPosts: true,
-                myPosts: true
-            });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+            // console.log("=========== savedPosts ===============");
+            // console.log(posts);
+            res.render('saved-posts',
+                {
+                    posts,
+                    loggedIn: req.session.loggedIn,
+                    createPost: true,
+                    myPosts: true
+                });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;

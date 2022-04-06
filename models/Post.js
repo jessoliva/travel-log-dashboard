@@ -9,13 +9,13 @@ class Post extends Model {
             user_id: body.user_id,
             post_id: body.post_id
         })
-        .then(() => {
-            return Post.findOne({
-                where: {
-                    id: body.post_id
-                }
+            .then(() => {
+                return Post.findOne({
+                    where: {
+                        id: body.post_id
+                    }
+                })
             })
-        })
     }
 }
 
@@ -31,27 +31,15 @@ Post.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
         city: {
             type: DataTypes.STRING,
-            validate: {
-                len: [1]
-            }
         },
         state_province: {
             type: DataTypes.STRING,
-            validate: {
-                len: [1]
-            }
         },
         country: {
             type: DataTypes.STRING,
-            validate: {
-                len: [1]
-            }
         },
         image_name: {
             type: DataTypes.STRING,
@@ -59,9 +47,6 @@ Post.init(
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
         restaurants: {
             type: DataTypes.TEXT,

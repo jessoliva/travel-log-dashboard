@@ -1,9 +1,18 @@
 <div class="vw-100">
     <!-- travel section -->
     <section class="single-post-top row mx-5 mt-5 mb-3">
-        <div class="col-5 post-photo image-container">
-            <img src="../images/{{post.image_name}}" />
+        {{#if post.image_name}}
+        <div class="col-5 post-photo" style="background-image: url('../images/{{post.image_name}}')">
+            {{!-- <img src="../images/{{post.image_name}}" /> --}}
         </div>
+        {{else}}
+        <div class="col-5 post-photo" style="background-image: url('../images/test.jpeg')">
+            {{!-- <img src="../images/{{post.image_name}}" /> --}}
+        </div>
+
+        {{/if}}
+
+
 
         <div class="col-7">
             <h2>{{fix_case post.title}}</h2>
@@ -15,10 +24,15 @@
         <p>{{post.description}}</p>
     </section> --}}
     <section class="single-post-bottom mx-5 row">
+
         <div class="col-4 tips-columns">
             <p class="tips-heading">places</p>
+            {{#if post.restaurants}}
             <div class="display-info">favorite restaurant: {{fix_case post.restaurants}}</div>
+            {{/if}}
+            {{#if post.attractions}}
             <div class="display-info">best attraction: {{fix_case post.attractions}}</div>
+            {{/if}}
             <p class="tips-heading">cost</p>
             <div class="display-info">average cost per meal per person: {{post.meal_cost}}</div>
             <div class="display-info">average cost per night in hotel or airbnb: {{post.hotel_cost}}</div>
