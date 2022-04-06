@@ -230,10 +230,17 @@ body {
 }
 
 .post-photo {
-   background-image: url('./images/background.jpeg');
    background-size: cover;
    min-height: 100%;
    border-radius: 15px;
+   padding: 0;
+}
+
+.post-photo img {
+   width:100%;
+   height:100%;
+   object-fit: cover;
+   border-radius: 15px 0 0 15px;
 }
 
 .single-post-middle {
