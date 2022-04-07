@@ -99,7 +99,7 @@ router.get('/posts/:id', (req, res) => {
             }
         })
         .then(saveData => {
-            const saveIDs = saveData.map(save => save.get({ plian: true }));
+            const saveIDs = saveData.map(save => save.get({ plain: true }));
 
             // if post is already saved by current user, save btn doesn't display
             saveIDs.forEach(saveId => {
