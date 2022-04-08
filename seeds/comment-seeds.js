@@ -8,7 +8,7 @@ const commentdata = [
     post_id:'2',
 },
 {
-    text:'xdsg auys ckasniu ',
+    text:'xdsg auys ckasniu',
     user_id:'2',
     post_id:'4',
 },
@@ -23,7 +23,7 @@ const commentdata = [
     post_id:'1',
 },
 {
-    text:'asyc asuc aidwh',
+    text:'asyc asuc aidwh ci', 
     user_id:'1',
     post_id:'3',
 },

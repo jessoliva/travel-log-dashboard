@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Save } = require('../../models');
 
 // GET all posts
 router.get('/', (req, res) => {
@@ -19,11 +19,11 @@ router.get('/', (req, res) => {
             }
         ]
     })
-        .then(postData => res.json(postData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err)
-        });
+    .then(postData => res.json(postData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 });
 
 // GET single post
@@ -46,26 +46,29 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-        .then(postData => {
-            if (!postData) {
-                res.status(404).json({
-                    message: "No post found with that ID."
-                });
-                return;
-            }
-            res.json(postData)
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err)
-        });
+    .then(postData => {
+        if (!postData) {
+            res.status(404).json({
+                message: "No post found with that ID."
+            });
+            return;
+        }
+        res.json(postData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 });
 
 // CREATE a post
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        location: req.body.location,
+        city: req.body.city,
+        state_province: req.body.state_province,
+        country: req.body.country,
+        image_name: req.body.image_name,
         description: req.body.description,
         restaurants: req.body.restaurants,
         attractions: req.body.attractions,
@@ -74,14 +77,32 @@ router.post('/', (req, res) => {
         tips: req.body.tips,
         kid_friendly: req.body.kid_friendly,
         pet_friendly: req.body.pet_friendly,
-        safety_rating: req.body.safety_rating
-        // user_id: req.session.user_id
+        safety_rating: req.body.safety_rating,
+        user_id: req.session.user_id
     })
     .then(newPostData => res.json(newPostData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err)
     });
+});
+
+// SAVE a post
+router.put('/save', (req, res) => {
+        Post.save(
+            {
+                post_id: req.body.post_id,
+                user_id: req.session.user_id
+            },
+            {
+                Save, User, Comment
+            }
+        )
+        .then(savedPostData => res.json(savedPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // UPDATE a post

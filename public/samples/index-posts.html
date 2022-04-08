@@ -62,6 +62,7 @@
 
       <!-- posts section -->
       <section class="posts vw-100 h-100 d-flex">
+<<<<<<< HEAD
         <article class="post">
             <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
             <h3 class="location text-white">Austin, Texas</h3>
@@ -73,6 +74,25 @@
             <h3 class="location text-white">Austin, Texas</h3>
             <h3 class="title text-center text-white">My Journey Through Austin </h3>
         </article>
+=======
+        <a href="/posts/{{id}}" class="post">
+          <div class="img-container">
+              <img src="../images/test.jpeg" />
+          </div>
+          <h3 class="title text-center text-white">{{fix_case city}}, {{fix_case state_province}}</h3>
+          <h3 class="title text-center location-info">{{fix_case country}}</h3>
+          <h3 class="title text-center location-info">{{fix_case title}}</h3>
+        </a>
+
+        <a href="/posts/{{id}}" class="post">
+          <div class="img-container">
+              <img src="../images/test.jpeg" />
+          </div>
+          <h3 class="location">{{fix_case city}}, {{fix_case state_province}}</h3>
+          <h3 class="country">{{fix_case country}}</h3>
+          <h3 class="title text-center text-white">Hello</h3>
+        </a>
+>>>>>>> dev/jess-merge
 
         <article class="post">
             <div class="img-container" style="background-image: url(../stylesheets/images/background.jpeg);"></div>
