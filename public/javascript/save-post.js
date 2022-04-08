@@ -14,6 +14,7 @@ async function saveBtnHandler(event) {
 
     if (response.ok) {
         console.log(response);
+        document.location.replace('/saved-posts');
     } else {
         alert(response.statusText);
     }

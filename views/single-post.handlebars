@@ -1,57 +1,103 @@
-<div class="vw-100">
-    <!-- travel section -->
-    <section class="single-post-top row mx-5 mt-5 mb-3">
-        <div class="col-5 post-photo image-container">
-            <img src="../images/{{post.image_name}}" />
-        </div>
+<main class="p-0">
 
-        <div class="col-7">
-            <h2>{{fix_case post.title}}</h2>
-            <p>{{post.description}}</p>
-        </div>
+    <div class="single vw-100">
+        <!-- travel section -->
+        <section class="single-post-top row mx-5 mt-5 mb-3">
+            {{#if post.image_name}}
+            <div class="col-5 post-photo" style="background-image: url('../images/{{post.image_name}}')">
+                {{!-- <img src="../images/{{post.image_name}}" /> --}}
+            </div>
+            {{else}}
+            <div class="col-5 post-photo" style="background-image: url('../images/test.jpeg')">
+                {{!-- <img src="../images/{{post.image_name}}" /> --}}
+            </div>
+            {{/if}}
 
-    </section>
-    {{!-- <section class="single-post-middle mx-5 text-center">
-        <p>{{post.description}}</p>
-    </section> --}}
-    <section class="single-post-bottom mx-5 row">
-        <div class="col-4 tips-columns">
-            <p class="tips-heading">places</p>
-            <div class="display-info">favorite restaurant: {{fix_case post.restaurants}}</div>
-            <div class="display-info">best attraction: {{fix_case post.attractions}}</div>
-            <p class="tips-heading">cost</p>
-            <div class="display-info">average cost per meal per person: {{post.meal_cost}}</div>
-            <div class="display-info">average cost per night in hotel or airbnb: {{post.hotel_cost}}</div>
+            {{!-- <div class="col-5 post-photo">
+                <img src="../images/{{post.image_name" />
+            </div>
+            <div class="col-5 post-photo">
+                <img src="../images/test.jpeg" />
+            </div> --}}
 
-        </div>
-        <div class="col-4 tips-columns">
-            <p class="tips-heading">travel tips</p>
-            <div class="display-info">{{post.tips}}</div>
-        </div>
+            <div class="col-7 single-text">
+                <h2>{{fix_case post.title}}</h2>
+                <p>{{post.description}}</p>
 
-        <div class="col-4 tips-columns">
-            <p class="tips-heading">best for</p>
-            <div class="display-info">Pet Friendly: {{post.pet_friendly}}</div>
-            <div class="display-info">Kid Friendly: {{post.kid_friendly}}</div>
-            <div class="display-info">Safety Rating: {{post.safety_rating}}</div>
+                {{#if notSaved}}
+                <div class="create-btn-div">
+                    <button id="save-post-btn" type="click" class="mt-3 btn-save btn rounded-pill shadow">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+        </section>
 
-        </div>
-    </section>
-    {{#if loggedIn}}
-    <form class="comment-form">
-        <div>
-            <textarea class="comment-input" id="comment-input" type="text"></textarea>
-        </div>
-        <div>
-            <button class="comment-btn" id="comment-btn" type="click">add comment</button>
-        </div>
-    </form>
+        {{!-- <section class="single-post-middle mx-5 text-center">
+            <p>{{post.description</p>
+        </section> --}}
 
-    {{/if}}
+        <section class="single-post-bottom mx-5 row">
 
-    {{> comments post.comments}}
-</div>
+            <div class="col-6 tips-columns">
+                    <p class="tips-heading">places</p>
+                    <div class="places">
+                        {{#if post.restaurants}}
+                        <div class="display-info text-center">Favorite Restaurants</div>
+                        <p class="text-center">{{fix_case post.restaurants}}</p>
+                        {{/if}}
+                        {{#if post.attractions}}
+                        <div class="display-info text-center">Attractions</div>
+                        <p class="text-center">{{fix_case post.attractions}}</p>
+                        {{/if}}
+                    </div>  
+
+                <p class="tips-heading">cost</p>
+                    <div class="places">
+                        <div class="display-info text-center">Avg Cost Per Meal Per Person</div>
+                        <p class="text-center">{{post.meal_cost}}</p>
+                        <div class="display-info text-center">Avg Cost Per Night in Hotes/Airbnb </div>
+                        <p class="text-center">{{post.hotel_cost}}</p>
+                    </div>  
+
+            </div>
+
+            <div class="col-6 tips-columns">
+                <p class="tips-heading">travel tips</p>
+                <div class="display-info">{{post.tips}}</div>
+
+                <p class="tips-heading">best for</p>
+                <div class="display-info">Pet Friendly: {{post.pet_friendly}}</div>
+                <div class="display-info">Kid Friendly: {{post.kid_friendly}}</div>
+                <div class="display-info">Safety Rating: {{post.safety_rating}}</div>
+            </div>
+
+            {{!-- <div class="col-4 tips-columns">
+                <p class="tips-heading">best for</p>
+                <div class="display-info">Pet Friendly: {{post.pet_friendly}}</div>
+                <div class="display-info">Kid Friendly: {{post.kid_friendly</div>
+                <div class="display-info">Safety Rating: {{post.safety_rating</div>
+            </div> --}}
+        </section>
+
+        {{#if loggedIn}}
+        <form class="comment-form">
+            <div class="d-flex justify-content-center">
+                <textarea class="comment-input" id="comment-input" type="text"></textarea>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button class="btn-search  btn rounded-pill shadow" id="comment-btn" type="click">add comment</button>
+            </div>
+        </form>
+
+        {{/if}}
+
+        {{> comments post.comments}}
+    </div>
+</main>
 
 {{#if loggedIn}}
 <script src="/javascript/single-post.js"></script>
 {{/if}}
+<script src="/javascript/save-post.js"></script>
