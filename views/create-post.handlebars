@@ -1,0 +1,147 @@
+<main class="p-0">
+
+    <!-- Left Side of Top Row of Create Post Page -->
+    <div class="create-post">
+        <section class="create-post-top row mx-5 mt-5 mb-3">
+            <div class="col-5 cp-top-left">
+                {{!-- <input class="tip text-center" type="text" id="title" placeholder="Enter Title:" />
+                <input class="tip text-center" type="text" id="city" placeholder="Enter City:" />
+                <input class="tip text-center" type="text" id="state_province" placeholder="Enter State/Province/Region:" />
+                <input class="tip text-center" type="text" id="country" placeholder="Enter Country:" />
+                <label class="file-input" for="post-images">Upload Photos</label>
+                <form method="post" action="/create" enctype="multipart/form-data">           
+                    <input type="file" id="post-images" name="image" />
+                    <input type="submit" value="Upload" />
+                </form> --}}
+                {{!-- <input class="hidden" type="file" id="post-files" /> --}}
+                {{!-- <label class="file-input" for="post-files">Upload Files Related to Your Travel</label> --}}
+
+                <input name="title" id="title" type="text" autofocus="true" placeholder="Post Title" class="tip-create p-2 rounded-pill text-center" />
+                <input name="city" id="city" type="text" autofocus="true" placeholder="City" class="tip-create p-2 rounded-pill text-center" />
+                <input name="state_province" id="state_province" type="text" autofocus="true" placeholder="State/Province/Region" class="tip-create p-2 rounded-pill text-center" />
+                <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
+
+                    {{!-- <label class="file-input" for="post-images">Upload Photos</label> --}}
+                <form method="post" action="/create" enctype="multipart/form-data">  
+                    <input type="file" id="post-images" name="image" class="image-upload"/>
+                    <input type="submit" value="Upload Photos" class="btn-upload btn rounded-pill shadow"/>
+                </form>
+
+            </div>
+
+            <!-- Right Side of Top Row - Describe Journey -->
+            <div class="col-7">
+                <textarea class="cp-top-right mt-0 p-3" type="text" id="description"
+            placeholder="Describe your journey."></textarea>
+            </div>
+            {{!-- <div class="col-7">
+                <input class="cp-top-right text-center mt-0" type="text" id="description"
+                    placeholder="Describe your journey." />
+            </div> --}}
+        </section>
+
+        <!-- Bottom Part of Create Form Page-->
+        <section class="cp-bottom mx-5 row">
+
+            <!-- Left Column of inputs - Places and Cost -->
+            <div class="col-4">
+                <p class="tips-heading">places</p>
+                    <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder="Favorite Restaurants" class="tip-create p-2 rounded-pill text-center" />
+                    <input name="attractions" id="attractions" type="text" autofocus="true" placeholder="Favorite Attractions" class="tip-create p-2 rounded-pill text-center" />
+                {{!-- <input class="tip text-center" type="text" id="restaurants" placeholder="Enter Favorite Restaurant" />
+                <input class="tip text-center mt-2" type="text" id="attractions" placeholder="Enter Favorite Attraction" /> --}}
+
+                <p class="tips-heading">cost</p>
+                    <!-- Drop down for Meal Costs -->
+                    <label class="tips-label text-center" for="meal-cost">Avg Cost per Meal per Person</label>
+                        <select name="meal-cost" id="meal-cost" class="select-drop">
+                            <option>Select An Avg Cost</option>
+                            <option value="$">Under $10</option>
+                            <option value="$$">$11 – $30</option>
+                            <option value="$$$">$31 – $60</option>
+                            <option value="$$$$">over $61</option>
+                        </select>
+
+                    <!-- Drop Down for Hotel Costs -->
+                    <label class="tips-label text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb</label>
+                        <select name="hotel-cost" id="hotel-cost" class="select-drop">
+                            <option>Select An Avg Cost</option>
+                            <option value="$">Under $70</option>
+                            <option value="$$">$71 – $120</option>
+                            <option value="$$$">$121 – $200</option>
+                            <option value="$$$$">over $201</option>
+                        </select>
+                {{!-- <!-- Drop down for Meal Costs -->
+                <label class="tip text-center" for="meal-cost">Avg Cost per Meal per Person
+                    <select name="meal-cost" id="meal-cost">
+                        <option value="$">Under $10</option>
+                        <option value="$$">$11 – $30</option>
+                        <option value="$$$">$31 – $60</option>
+                        <option value="$$$$">over $61</option>
+                    </select>
+                </label>
+
+                <!-- Drop Down for Hotel Costs -->
+                <label class="tip text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb
+                    <select name="hotel-cost" id="hotel-cost">
+                        <option value="$">Under $70</option>
+                        <option value="$$">$71 – $120</option>
+                        <option value="$$$">$121 – $200</option>
+                        <option value="$$$$">over $201</option>
+                    </select>
+                </label> --}}
+            </div>
+
+            <!-- Middle Column of Inputs - Tips -->
+            <div class="col-4">
+                <p class="tips-heading">tips</p>
+                {{!-- <input class="tips-entry text-center" type="text" id="tips" placeholder="Enter Travel and Safety Tips" /> --}}
+                    <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
+            </div>
+            
+            <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
+            <div class="col-4">
+                <p class="tips-heading">best for</p>
+                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Kid Friendly?&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="yes"> Yes
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="no"> No
+                    </form>
+                </div>
+
+                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Pet Friendly?&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="yes"> Yes
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="no"> No
+                    </form>
+                </div>
+
+                <div class="radio-tip-lg my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Safety Rating:&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="safety-rating" id="safety-rating" value="safe"> Safe
+                        <input type="radio" name="safety-rating" id="safety-rating" value="ok"> Be Mindful
+                        <input type="radio" name="safety-rating" id="safety-rating" value="dangerous"> Pepper Spray
+                    </form>
+                </div>
+
+                <div class="create-btn-div">
+                    <button id="create-post-btn" type="click" class="mt-4 btn-search btn rounded-pill shadow">Create
+                        Post</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- drop-down select section
+            <div class="h-50 px-3 text-center">
+            <select id="cities" class="w-100 p-2 rounded-pill text-center">
+                <option value="Searched Cities">Searched Cities</option>
+            </select>
+            </div> -->
+
+    </div>
+
+</main>
+<script src="/javascript/create-post.js"></script>
