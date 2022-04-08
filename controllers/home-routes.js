@@ -216,48 +216,28 @@ router.get('/saved-posts', (req, res) => {
         });
 });
 
-// render my-posts
-router.get('/my-posts', (req, res) => {
-    console.log(req.session);
-    // finds posts with user_ids matching current session's user_id
-    const id = parseInt(req.session.user_id);
-    Post.findAll({
-        where: {
-            user_id: id
-        }
-    })
-    .then(postData => {
-        const myPosts = postData.map(post => post.get({ plain: true }));
-        res.render('my-posts', { myPosts });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
-
-// render saved-posts page
-router.get('/saved-posts', (req, res) => {
-    if (!req.session) {
+// render edit-post page
+router.get('/edit/:id', (req, res) => {
+    if (!req.session.loggedIn) {
         res.redirect('/');
         return;
     }
 
-    // finds save data with user_id matching current session's user ID
-    Save.findAll({
+    Post.findOne({
         where: {
-            user_id: req.session.user_id
-        },
-        include: {
-            model: Post
+            id: req.params.id
         }
     })
-    .then(saveData => {
-        const savedPosts = saveData.map(save => save.get({ plain: true }));
+    .then(postData => {
+        const post = postData.get({ plain: true });
 
-        console.log("=========== savedPosts ===============");
-        console.log(savedPosts);
-        res.render('saved-posts', { savedPosts });
+        // if post not owned by user, redirect to user's my-post page
+        if (req.session.user_id != post.user_id) {
+            res.redirect('/my-posts');
+            return;
+        }
+
+        res.render('edit-post', { post });
     })
     .catch(err => {
         console.log(err);
