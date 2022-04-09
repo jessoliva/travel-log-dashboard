@@ -1,22 +1,6 @@
 // find post ID from current post url
 const post_id = window.location.pathname.toString().split('/')[2];
 
-// input elements
-let title = document.querySelector('#title');
-let city = document.querySelector('#city');
-let state_province = document.querySelector('#state_province');
-let country = document.querySelector('#country');
-let description = document.querySelector('#description');
-let restaurants = document.querySelector('#restaurants');
-let attractions = document.querySelector('#attractions');
-let meal_cost = document.querySelector('#meal-cost');
-let hotel_cost = document.querySelector('#hotel-cost');
-let tips = document.querySelector('#tips');
-let kid_friendly = document.querySelector('#kid-friendly');
-let pet_friendly = document.querySelector('#pet-friendly');
-let safety_rating = document.querySelector('#safety-rating');
-let image_name = document.querySelector('#post-images');
-
 async function getPostData() {
     fetch(`/api/posts/${post_id}`)
     .then(response => response.json())
@@ -26,6 +10,22 @@ async function getPostData() {
 };
 
 const generatePostData = function(post) {
+    // input elements
+    let title = document.querySelector('#title');
+    let city = document.querySelector('#city');
+    let state_province = document.querySelector('#state_province');
+    let country = document.querySelector('#country');
+    let description = document.querySelector('#description');
+    let restaurants = document.querySelector('#restaurants');
+    let attractions = document.querySelector('#attractions');
+    let meal_cost = document.querySelector('#meal-cost');
+    let hotel_cost = document.querySelector('#hotel-cost');
+    let tips = document.querySelector('#tips');
+    let kid_friendly = document.querySelector('#kid-friendly');
+    let pet_friendly = document.querySelector('#pet-friendly');
+    let safety_rating = document.querySelector('#safety-rating');
+    let image_name = document.querySelector('#post-images');
+    
     // find index for meal_cost
     if (post[0].meal_cost) {
         let option = post[0].meal_cost;
