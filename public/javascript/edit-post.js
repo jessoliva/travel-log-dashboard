@@ -1,3 +1,7 @@
+// find post ID from current post url
+const post_id = window.location.pathname.toString().split('/')[2];
+
+// input elements
 let title = document.querySelector('#title');
 let city = document.querySelector('#city');
 let state_province = document.querySelector('#state_province');
@@ -13,14 +17,15 @@ let pet_friendly = document.querySelector('#pet-friendly');
 let safety_rating = document.querySelector('#safety-rating');
 let image_name = document.querySelector('#post-images');
 
-async function generatePostData() {
+async function getPostData() {
+    fetch(`/api/posts/${post_id}`)
+    .then(response => response.json())
+    .then(postData => {
+        generatePostData(postData);
+    });
+};
 
-    // find post ID from current post url
-    const post_id = window.location.pathname.toString().split('/')[2];
-    
-    const post = await fetch(`/api/posts/${post_id}`)
-    .then(response => response.json());
-
+const generatePostData = function(post) {
     // find index for meal_cost
     if (post[0].meal_cost) {
         let option = post[0].meal_cost;
@@ -111,47 +116,55 @@ async function generatePostData() {
     restaurants.value = post[0].restaurants;
     attractions.value = post[0].attractions;
     tips.value = post[0].tips;
-    image_name;
-    //image_name.files[0].name;
-
-    console.log(post);
-
-    // use selectedIndex for dropdown menu values
+    // image_name = post[0].image_name;
 };
 
 async function updateBtnHandler(event) {
     event.preventDefault();
 
-
-
-    // find post ID from current post url
-    const post_id = window.location.pathname.toString().split('/')[2];
+    let new_title = document.querySelector('#title').value.trim();
+    let new_city = document.querySelector('#city').value.trim();
+    let new_state_province = document.querySelector('#state_province').value.trim();
+    let new_country = document.querySelector('#country').value.trim();
+    let new_description = document.querySelector('#description').value.trim();
+    let new_restaurants = document.querySelector('#restaurants').value.trim();
+    let new_attractions = document.querySelector('#attractions').value.trim();
+    let new_meal_cost = document.querySelector('#meal-cost').value.trim();
+    let new_hotel_cost = document.querySelector('#hotel-cost').value.trim();
+    let new_tips = document.querySelector('#tips').value.trim();
+    let new_kid_friendly = document.querySelector('#kid-friendly').value.trim();
+    let new_pet_friendly = document.querySelector('#pet-friendly').value.trim();
+    let new_safety_rating = document.querySelector('#safety-rating').value.trim();
+    // get name of file uploaded
+    // let new_image_name = document.querySelector('#post-images').files[0].name;
 
     const response = await fetch(`/api/posts/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({ 
-            title,
-            city,
-            state_province,
-            country,
-            image_name,
-            description,
-            restaurants,
-            attractions,
-            meal_cost,
-            hotel_cost,
-            tips,
-            kid_friendly,
-            pet_friendly,
-            safety_rating
+            new_title,
+            new_city,
+            new_state_province,
+            new_country,
+            // new_image_name,
+            new_description,
+            new_restaurants,
+            new_attractions,
+            new_meal_cost,
+            new_hotel_cost,
+            new_tips,
+            new_kid_friendly,
+            new_pet_friendly,
+            new_safety_rating
          }),
         headers: {
             'Content-Type': 'application/json'
         }
-    });
+    })
 
     if (response.ok) {
-        document.location.replace(`/posts/${post_id}`);
+        // document.location.replace(`/posts/${post_id}`);
+        response.json();
+        console.log(response);
     } else {
         alert(response.statusText);
     }
@@ -159,4 +172,4 @@ async function updateBtnHandler(event) {
 
 document.querySelector("#update-post-btn").addEventListener('click', updateBtnHandler);
 
-generatePostData();
+getPostData();

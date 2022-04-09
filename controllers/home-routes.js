@@ -222,31 +222,7 @@ router.get('/edit/:id', (req, res) => {
         return;
     }
 
-    Post.findOne({
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(postData => {
-        const post = postData.get({ plain: true });
-
-        // if post not owned by user, redirect to user's my-post page
-        if (req.session.user_id != post.user_id) {
-            res.redirect('/my-posts');
-            return;
-        }
-
-        res.render('edit-post', { 
-            post,
-            loggedIn: req.session.loggedIn,
-            createPost: true,
-            myPosts: true
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    res.render('edit-post', { loggedIn: req.session.loggedIn });
 });
 
 module.exports = router;
