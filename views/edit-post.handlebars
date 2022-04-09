@@ -4,30 +4,14 @@
     <div class="create-post">
         <section class="create-post-top row mx-5 mt-5 mb-3">
             <div class="col-5 cp-top-left">
-                    <input name="title" id="title" type="text" autofocus="true" placeholder={{post.title}} class="tip-create p-2 rounded-pill text-center" />
-                <!-- city -->
-                {{#if post.city}}
-                    <input name="city" id="city" type="text" autofocus="true" placeholder={{post.city}} class="tip-create p-2 rounded-pill text-center" />
-                {{else}}
-                    <input name="city" id="city" type="text" autofocus="true" placeholder="City" class="tip-create p-2 rounded-pill text-center" />
-                {{/if}}
-                <!--state/province/region -->
-                {{#if post.state_province}}
-                    <input name="state_province" id="state_province" type="text" autofocus="true" placeholder={{post.state_province}} class="tip-create p-2 rounded-pill text-center" />
-                {{else}}
-                    <input name="state_province" id="state_province" type="text" autofocus="true" placeholder="State/Province/Region" class="tip-create p-2 rounded-pill text-center" />
-                {{/if}}
-                <!-- country -->
-                {{#if post.country}}
-                    <input name="country" id="country" type="text" autofocus="true" placeholder={{post.country}} class="tip-create p-2 rounded-pill text-center" />
-                {{else}}
-                    <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
-                {{/if}}
+                <input name="title" id="title" type="text" autofocus="true" placeholder="Post Title" class="tip-create p-2 rounded-pill text-center" />
+                <input name="city" id="city" type="text" autofocus="true" placeholder="City" class="tip-create p-2 rounded-pill text-center" />
+                <input name="state_province" id="state_province" type="text" autofocus="true" placeholder="State/Province/Region" class="tip-create p-2 rounded-pill text-center" />
+                <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
 
-                    {{!-- <label class="file-input" for="post-images">Upload Photos</label> --}}
                 <form method="post" action="/create" enctype="multipart/form-data">  
                     <input type="file" id="post-images" name="image" class="image-upload"/>
-                    <input type="submit" value="Upload Photos" class="btn-upload btn rounded-pill shadow"/>
+                    <input type="submit" value="Upload Photo" class="btn-upload btn rounded-pill shadow"/>
                 </form>
 
             </div>
@@ -35,34 +19,25 @@
             <!-- Right Side of Top Row - Describe Journey -->
             <div class="col-7">
                 <textarea class="cp-top-right mt-0 p-3" type="text" id="description"
-            placeholder="Describe your journey.">{{post.description}}</textarea>
+            placeholder="Describe your journey."></textarea>
             </div>
         </section>
 
         <!-- Bottom Part of Create Form Page-->
         <section class="cp-bottom mx-5 row">
-
+            
             <!-- Left Column of inputs - Places and Cost -->
             <div class="col-4">
                 <p class="tips-heading">places</p>
-                    <!-- restaurants -->
-                    {{#if post.restaurants}}
-                        <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder={{post.restaurants}} class="tip-create p-2 rounded-pill text-center" />
-                    {{else}}
-                        <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder="Favorite Restaurants" class="tip-create p-2 rounded-pill text-center" />
-                    {{/if}}
-                    <!-- attractions -->
-                    {{#if post.attractions}}
-                        <input name="attractions" id="attractions" type="text" autofocus="true" placeholder={{post.attractions}} class="tip-create p-2 rounded-pill text-center" />
-                    {{else}}
-                        <input name="attractions" id="attractions" type="text" autofocus="true" placeholder="Favorite Attractions" class="tip-create p-2 rounded-pill text-center" />
-                    {{/if}}
+                    <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder="Favorite Restaurants" class="tip-create p-2 rounded-pill text-center" />
+                    <input name="attractions" id="attractions" type="text" autofocus="true" placeholder="Favorite Attractions" class="tip-create p-2 rounded-pill text-center" />
 
                 <p class="tips-heading">cost</p>
                     <!-- Drop down for Meal Costs -->
-                    <label class="tips-label text-center" for="meal-cost">Avg Cost per Meal per Person</label>
-                        <select name="meal-cost" id="meal-cost" class="select-drop">
-                            <option>Select An Avg Cost</option>
+                    {{!-- <label class="tips-label text-center" for="meal-cost">Avg Meal Cost per Person</label> --}}
+                        <p>Meals</p>
+                        <select name="meal-cost" id="meal-cost" class="select-drop mb-3">
+                            <option value="">Avg Meal Cost/Person</option>
                             <option value="$">Under $10</option>
                             <option value="$$">$11 – $30</option>
                             <option value="$$$">$31 – $60</option>
@@ -70,9 +45,10 @@
                         </select>
 
                     <!-- Drop Down for Hotel Costs -->
-                    <label class="tips-label text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb</label>
+                    {{!-- <label class="tips-label text-center mt-2" for="hotel-cost">Avg Lodging Cost per Night</label> --}}
+                        <p>Lodging</p>
                         <select name="hotel-cost" id="hotel-cost" class="select-drop">
-                            <option>Select An Avg Cost</option>
+                            <option value="">Avg Lodging Cost/Night</option>
                             <option value="$">Under $70</option>
                             <option value="$$">$71 – $120</option>
                             <option value="$$$">$121 – $200</option>
@@ -83,55 +59,39 @@
             <!-- Middle Column of Inputs - Tips -->
             <div class="col-4">
                 <p class="tips-heading">tips</p>
-                    <!-- tips -->
-                    {{#if post.tips}}
-                        <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?">{{post.tips}}</textarea>
-                    {{else}}
-                        <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
-                    {{/if}}
+                    <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
             </div>
             
             <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
             <div class="col-4">
                 <p class="tips-heading">best for</p>
-                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
-                    Kid Friendly?&nbsp;&nbsp;
-                    <form>
-                        <input type="radio" name="kid-friendly" id="kid-friendly" value="yes"> Yes
-                        <input type="radio" name="kid-friendly" id="kid-friendly" value="no"> No
-                    </form>
-                </div>
 
-                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
-                    Pet Friendly?&nbsp;&nbsp;
-                    <form>
-                        <input type="radio" name="pet-friendly" id="pet-friendly" value="yes"> Yes
-                        <input type="radio" name="pet-friendly" id="pet-friendly" value="no"> No
-                    </form>
-                </div>
+                <p>Kid Friendly</p>
+                <select name="kid-friendly" id="kid-friendly" class="select-drop mb-3">
+                    <option value="">Is It Kid Friendly?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
 
-                <div class="radio-tip-lg my-2 d-flex flex-wrap justify-content-center align-content-center">
-                    Safety Rating:&nbsp;&nbsp;
-                    <form>
-                        <input type="radio" name="safety-rating" id="safety-rating" value="safe"> Safe
-                        <input type="radio" name="safety-rating" id="safety-rating" value="ok"> Be Mindful
-                        <input type="radio" name="safety-rating" id="safety-rating" value="dangerous"> Pepper Spray
-                    </form>
-                </div>
+                <p>Pet Friendly</p>
+                <select name="pet-friendly" id="pet-friendly" class="select-drop mb-3">
+                    <option value="">Is It Pet Friendly?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <p>Safety Rating</p>
+                <select name="safety-rating" id="safety-rating" class="select-drop mb-3">
+                    <option value="">Safety Rating:</option>
+                    <option value="ok">Be Mindful</option>
+                    <option value="dangerous">Pepper Spray</option>
+                </select>
 
                 <div class="create-btn-div">
-                    <button id="update-post-btn" type="click" class="mt-4 btn-search btn rounded-pill shadow">Save
-                        Changes</button>
+                    <button id="update-post-btn" type="click" class="mt-4 btn-search btn rounded-pill shadow">Save Changes</button>
                 </div>
             </div>
         </section>
-
-        <!-- drop-down select section
-            <div class="h-50 px-3 text-center">
-            <select id="cities" class="w-100 p-2 rounded-pill text-center">
-                <option value="Searched Cities">Searched Cities</option>
-            </select>
-            </div> -->
 
     </div>
 
