@@ -551,37 +551,78 @@ a {
 /*****************************************************/
 
 /* MEDIA QUERY STYLES  */
-@media only screen and (max-width: 576px) {
+/*Create Post Media Query-tablet*/
+
+@media only screen and (max-width: 768px){
+   label.file-input{
+      width:75%;
+   }
+   div.col-4.tips-columns{
+      width:50%;
+   }
+   input#tips.tips-columns{
+      width:100%;
+   }
+   .text-center{
+      width:100%;
+   }
+   input#tips-entry.text-center{
+      width:100%;
+   }
+   div.tip.text-center.my-2{
+      height:auto;
+   }
+}
+/*Create Post Media Query-Phone*/
+@media only screen and (max-width: 425px){
+   div.col-4.tips-columns{
+      width:100%;
+   }
+   label.file-input{
+      width:100%;
+      height:auto
+   }
+   p.tips-heading{
+   display:inline-block}
+   .text-center{
+      width:100%
+   }
+   input#tips.tips-columns{
+      width:100%;
+   }
+}
+
+
+
+
+
+
+
+   /*@media only screen and (max-width: 425px) {
    .navigation {
       padding: 0 40px;
    }
-
    .search {
       padding-top: 0;
       padding-bottom: 20px;
       margin-bottom: 20px;
    }
-
    .curr-container {
       padding: 0;
    }
-
    .current {
       margin: 40px 35px;
       padding: 25px;
    }
-
    .current h3 {
       font-size: 18px;
    }
-
    .forecast {
       flex-wrap: wrap;
       padding-top: 0;
    }
-
    .days {
       width: 100%;
       margin-bottom: 10px;
    }
-}
+}*/
