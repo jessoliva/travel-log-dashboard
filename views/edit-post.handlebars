@@ -19,7 +19,7 @@
                 {{/if}}
                 <!-- country -->
                 {{#if post.country}}
-                    <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
+                    <input name="country" id="country" type="text" autofocus="true" placeholder={{post.country}} class="tip-create p-2 rounded-pill text-center" />
                 {{else}}
                     <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
                 {{/if}}
@@ -45,10 +45,18 @@
             <!-- Left Column of inputs - Places and Cost -->
             <div class="col-4">
                 <p class="tips-heading">places</p>
-                    <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder="Favorite Restaurants" class="tip-create p-2 rounded-pill text-center" />
-                    <input name="attractions" id="attractions" type="text" autofocus="true" placeholder="Favorite Attractions" class="tip-create p-2 rounded-pill text-center" />
-                {{!-- <input class="tip text-center" type="text" id="restaurants" placeholder="Enter Favorite Restaurant" />
-                <input class="tip text-center mt-2" type="text" id="attractions" placeholder="Enter Favorite Attraction" /> --}}
+                    <!-- restaurants -->
+                    {{#if post.restaurants}}
+                        <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder={{post.restaurants}} class="tip-create p-2 rounded-pill text-center" />
+                    {{else}}
+                        <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder="Favorite Restaurants" class="tip-create p-2 rounded-pill text-center" />
+                    {{/if}}
+                    <!-- attractions -->
+                    {{#if post.attractions}}
+                        <input name="attractions" id="attractions" type="text" autofocus="true" placeholder={{post.attractions}} class="tip-create p-2 rounded-pill text-center" />
+                    {{else}}
+                        <input name="attractions" id="attractions" type="text" autofocus="true" placeholder="Favorite Attractions" class="tip-create p-2 rounded-pill text-center" />
+                    {{/if}}
 
                 <p class="tips-heading">cost</p>
                     <!-- Drop down for Meal Costs -->
@@ -70,32 +78,17 @@
                             <option value="$$$">$121 – $200</option>
                             <option value="$$$$">over $201</option>
                         </select>
-                {{!-- <!-- Drop down for Meal Costs -->
-                <label class="tip text-center" for="meal-cost">Avg Cost per Meal per Person
-                    <select name="meal-cost" id="meal-cost">
-                        <option value="$">Under $10</option>
-                        <option value="$$">$11 – $30</option>
-                        <option value="$$$">$31 – $60</option>
-                        <option value="$$$$">over $61</option>
-                    </select>
-                </label>
-
-                <!-- Drop Down for Hotel Costs -->
-                <label class="tip text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb
-                    <select name="hotel-cost" id="hotel-cost">
-                        <option value="$">Under $70</option>
-                        <option value="$$">$71 – $120</option>
-                        <option value="$$$">$121 – $200</option>
-                        <option value="$$$$">over $201</option>
-                    </select>
-                </label> --}}
             </div>
 
             <!-- Middle Column of Inputs - Tips -->
             <div class="col-4">
                 <p class="tips-heading">tips</p>
-                {{!-- <input class="tips-entry text-center" type="text" id="tips" placeholder="Enter Travel and Safety Tips" /> --}}
-                    <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
+                    <!-- tips -->
+                    {{#if post.tips}}
+                        <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?">{{post.tips}}</textarea>
+                    {{else}}
+                        <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
+                    {{/if}}
             </div>
             
             <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->

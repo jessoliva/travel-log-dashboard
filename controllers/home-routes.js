@@ -106,26 +106,25 @@ router.get('/posts/:id', (req, res) => {
                         user_id: req.session.user_id
                     }
                 })
-                    .then(saveData => {
-                        const saveIDs = saveData.map(save => save.get({ plain: true }));
-
-                        // if post is already saved by current user, save btn doesn't display
-                        saveIDs.forEach(saveId => {
-                            if (saveId.post_id == post.id) {
-                                console.log(saveId);
-                                console.log(post);
-                                savedStatus = false;
-                            }
-                        });
-                        res.render('single-post', {
-                            post,
-                            loggedIn: req.session.loggedIn,
-                            notSaved: savedStatus,
-                            createPost: true,
-                            savedPosts: true,
-                            myPosts: true
-                        });
-                    })
+                .then(saveData => {
+                    const saveIDs = saveData.map(save => save.get({ plain: true }));
+                    // if post is already saved by current user, save btn doesn't display
+                    saveIDs.forEach(saveId => {
+                        if (saveId.post_id == post.id) {
+                            console.log(saveId);
+                            console.log(post);
+                            savedStatus = false;
+                        }
+                    });
+                    res.render('single-post', {
+                        post,
+                        loggedIn: req.session.loggedIn,
+                        notSaved: savedStatus,
+                        createPost: true,
+                        savedPosts: true,
+                        myPosts: true
+                    });
+                })
             }
         })
         .catch(err => {
@@ -237,7 +236,12 @@ router.get('/edit/:id', (req, res) => {
             return;
         }
 
-        res.render('edit-post', { post });
+        res.render('edit-post', { 
+            post,
+            loggedIn: req.session.loggedIn,
+            createPost: true,
+            myPosts: true
+        });
     })
     .catch(err => {
         console.log(err);
