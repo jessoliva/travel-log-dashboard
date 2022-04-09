@@ -24,6 +24,13 @@
                     </button>
                 </div>
                 {{/if}}
+    
+                {{#if deletePost}}
+                <div class="create-btn-div">
+                    <button id="delete-post-btn" type="click" class="mt-3 btn-save btn rounded-pill shadow">Delete</button>
+                </div>
+                {{/if}}
+
             </div>
         </section>
 
@@ -67,7 +74,6 @@
                 <div class="display-info">Kid Friendly: {{post.kid_friendly}}</div>
                 <div class="display-info">Safety Rating: {{post.safety_rating}}</div>
             </div>
-
         </section>
 
         {{#if loggedIn}}
@@ -85,7 +91,10 @@
     </div>
 </main>
 
-{{#if loggedIn}}
 <script src="/javascript/single-post.js"></script>
+{{#if deletePost}}
+<script src="/javascript/delete-post.js"></script>
 {{/if}}
+{{#if notSaved}}
 <script src="/javascript/save-post.js"></script>
+{{/if}}

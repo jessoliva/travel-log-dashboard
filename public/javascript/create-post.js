@@ -23,8 +23,6 @@ async function postFormHandler(event) {
         image_name = document.querySelector('#post-images').files[0].name;
     }
 
-    console.log('kid_friendly', kid_friendly);
-
     if (title) {
         const response = await fetch('/api/posts', {
             method: 'POST',
@@ -60,5 +58,5 @@ async function postFormHandler(event) {
 document.querySelector('#create-post-btn').addEventListener('click', postFormHandler);
 
 function displayHide() {
-    
+
 }

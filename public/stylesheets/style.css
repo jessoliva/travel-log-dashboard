@@ -96,10 +96,14 @@ body {
 /*~~~~~~ LOGIN/SIGNUP/HOMEPAGE HTML ~~~~~~*/
 /* MAIN SECTION STYLES */
 .home_log_sign {
-   height: 80%;
    display: flex;
+   justify-content: center;
+}
+
+.height-pic {
+   display: flex;
+   justify-content: center;
    align-items: center;
-   justify-content: center
 }
 /************************/
 
@@ -190,16 +194,15 @@ body {
 
 /*~~~~~~ ALL POSTS HTML ~~~~~~*/
 .posts {
-   /* height: 100%; */
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
-   margin: 0 auto;
+   /* margin: 0 auto;
    padding: 40px 0;
-   margin-bottom: 40px;
-   margin-top: 120px;
+   margin-top: 220px; */
+   padding-bottom: 40px;
 }
 
 .post {
@@ -417,6 +420,10 @@ a {
 
 .fa-heart:hover {
    color: var(--primary);
+}
+
+#delete-post-btn {
+   color: var(--secondary);
 }
 
 /*****************************************************/
