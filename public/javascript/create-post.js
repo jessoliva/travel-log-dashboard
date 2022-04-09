@@ -8,16 +8,22 @@ async function postFormHandler(event) {
     const description = document.querySelector('#description').value.trim();
     const restaurants = document.querySelector('#restaurants').value.trim();
     const attractions = document.querySelector('#attractions').value.trim();
-    const meal_cost = document.querySelector('#meal-cost').value.trim();
-    const hotel_cost = document.querySelector('#hotel-cost').value.trim();
+    let meal_cost = document.querySelector('#meal-cost').value.trim();
+    let hotel_cost = document.querySelector('#hotel-cost').value.trim();
     const tips = document.querySelector('#tips').value.trim();
     const kid_friendly = document.querySelector('#kid-friendly').value.trim();
     const pet_friendly = document.querySelector('#pet-friendly').value.trim();
     const safety_rating = document.querySelector('#safety-rating').value.trim();
-    // get name of file uploaded
-    const image_name = document.querySelector('#post-images').files[0].name;
 
-    console.log(safety_rating);
+    // if user doesn't upload photo
+    let image_name = 'no-image.jpeg';
+
+    // get uploaded image name
+    if (document.querySelector('#post-images').files[0] !== undefined) {
+        image_name = document.querySelector('#post-images').files[0].name;
+    }
+
+    console.log('kid_friendly', kid_friendly);
 
     if (title) {
         const response = await fetch('/api/posts', {
@@ -52,3 +58,7 @@ async function postFormHandler(event) {
 };
 
 document.querySelector('#create-post-btn').addEventListener('click', postFormHandler);
+
+function displayHide() {
+    
+}

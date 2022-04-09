@@ -318,7 +318,7 @@ a {
    width: 90%;
 }
 
-.radio-tip {
+/* .radio-tip {
    height: 50px;
    border: 3px var(--secondary) solid;
    border-radius: 26px;
@@ -330,7 +330,7 @@ a {
    border: 3px var(--secondary) solid;
    border-radius: 26px;
    width: 90%;
-}
+} */
 
 .tips-heading {
    font-style: italic;
@@ -442,6 +442,7 @@ a {
 
 .cp-top-right {
    background-color: var(--form-background);
+   border: 3px var(--secondary) solid;
    border-radius: 15px;
    height: 100%;
    width: 100%;
@@ -472,6 +473,7 @@ a {
    width: 80%;
    margin: 5px;
    background-color: var(--form-background);
+   border: 3px var(--secondary) solid;
 }
 
 .tips-heading {
@@ -488,6 +490,7 @@ a {
 .tips-entry {
    background-color: var(--form-background);
    border-radius: 15px;
+   border: 3px var(--secondary) solid;
    height: 80%;
    width: 90%;
    margin: 5px;
@@ -518,8 +521,11 @@ a {
 
 .select-drop {
    background-color: var(--form-background);
-   padding: 4px 10px;
+   border: 3px var(--secondary) solid;
+   padding: 4px 15px;
    border-radius: 26px;
+   width: 265px;
+   text-align: center;
 }
 
 .image-upload {

@@ -9,11 +9,6 @@
                 <input name="state_province" id="state_province" type="text" autofocus="true" placeholder="State/Province/Region" class="tip-create p-2 rounded-pill text-center" />
                 <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
 
-                <form method="post" action="/create" enctype="multipart/form-data">  
-                    <input type="file" id="post-images" name="image" class="image-upload"/>
-                    <input type="submit" value="Upload Photo" class="btn-upload btn rounded-pill shadow"/>
-                </form>
-
             </div>
 
             <!-- Right Side of Top Row - Describe Journey -->
@@ -25,7 +20,7 @@
 
         <!-- Bottom Part of Create Form Page-->
         <section class="cp-bottom mx-5 row">
-            
+
             <!-- Left Column of inputs - Places and Cost -->
             <div class="col-4">
                 <p class="tips-heading">places</p>
@@ -34,9 +29,9 @@
 
                 <p class="tips-heading">cost</p>
                     <!-- Drop down for Meal Costs -->
-                    {{!-- <label class="tips-label text-center" for="meal-cost">Avg Meal Cost per Person</label> --}}
-                        <select name="meal-cost" id="meal-cost" class="select-drop mb-3">
-                            <option value="">Avg Meal Cost/Person</option>
+                    <label class="tips-label text-center" for="meal-cost">Avg Cost per Meal per Person</label>
+                        <select name="meal-cost" id="meal-cost" class="select-drop">
+                            <option>Select An Avg Cost</option>
                             <option value="$">Under $10</option>
                             <option value="$$">$11 – $30</option>
                             <option value="$$$">$31 – $60</option>
@@ -44,9 +39,9 @@
                         </select>
 
                     <!-- Drop Down for Hotel Costs -->
-                    {{!-- <label class="tips-label text-center mt-2" for="hotel-cost">Avg Lodging Cost per Night</label> --}}
+                    <label class="tips-label text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb</label>
                         <select name="hotel-cost" id="hotel-cost" class="select-drop">
-                            <option value="">Avg Lodging Cost/Night</option>
+                            <option>Select An Avg Cost</option>
                             <option value="$">Under $70</option>
                             <option value="$$">$71 – $120</option>
                             <option value="$$$">$121 – $200</option>
@@ -57,35 +52,45 @@
             <!-- Middle Column of Inputs - Tips -->
             <div class="col-4">
                 <p class="tips-heading">tips</p>
+                {{!-- <input class="tips-entry text-center" type="text" id="tips" placeholder="Enter Travel and Safety Tips" /> --}}
                     <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
             </div>
             
             <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
             <div class="col-4">
                 <p class="tips-heading">best for</p>
+                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Kid Friendly?&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="yes"> Yes
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="no"> No
+                    </form>
+                </div>
 
-                <select name="kid-friendly" id="kid-friendly" class="select-drop mb-3">
-                    <option value="">Is It Kid Friendly?</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
+                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Pet Friendly?&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="yes"> Yes
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="no"> No
+                    </form>
+                </div>
 
-
-                <select name="pet-friendly" id="pet-friendly" class="select-drop mb-3">
-                    <option value="">Is It Pet Friendly?</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-
-                <select name="safety-rating" id="safety-rating" class="select-drop mb-3">
-                    <option value="">Safety Rating:</option>
-                    <option value="ok">Be Mindful</option>
-                    <option value="dangerous">Pepper Spray</option>
-                </select>
+                <div class="radio-tip-lg my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Safety Rating:&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="safety-rating" id="safety-rating" value="safe"> Safe
+                        <input type="radio" name="safety-rating" id="safety-rating" value="ok"> Be Mindful
+                        <input type="radio" name="safety-rating" id="safety-rating" value="dangerous"> Pepper Spray
+                    </form>
+                </div>
 
                 <div class="create-btn-div">
-                    <button id="create-post-btn" type="click" class="mt-4 btn-search btn rounded-pill shadow">Create
-                        Post</button>
+
+                    <form class="d-flex flex-wrap justify-content-center" method="post" action="/create" enctype="multipart/form-data">  
+                        <input type="file" id="post-images" name="image" class="image-upload"/>
+                        <input id="create-post-btn" type="submit" value="Create Post" class="btn-upload btn rounded-pill shadow"/>
+                    </form>
+                    {{!-- <button id="create-post-btn" type="click" class="mt-4 btn-search btn rounded-pill shadow">Create Post</button> --}}
                 </div>
             </div>
         </section>
