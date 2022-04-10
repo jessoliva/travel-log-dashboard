@@ -20,6 +20,10 @@ Comment.init(
                 len: [1]
             }
         },
+        can_delete: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
