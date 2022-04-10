@@ -1,7 +1,6 @@
+{{#if filterResults}}
 <main class="home_log_sign p-0 mb-4">
-
     <div class="posts"> 
-        {{#if filterResults}}
         {{#each filterResults as |post|}}
         <a href="/posts/{{id}}" class="post">
             <div class="img-container">
@@ -12,11 +11,11 @@
             <h3 class="title text-center text-white">{{fix_case title}}</h3>
         </a>
         {{/each}}
-
-        {{else}}
-        <p>No posts found for that location!</p>
-        {{/if}}
-
     </div>
-
 </main>
+
+{{else}}
+<main class="h-100 d-flex align-items-center justify-content-center mb-4 background">
+    <p class="no-posts">No posts found for that location!</p>
+</div>
+{{/if}}

@@ -15,18 +15,7 @@ body {
    margin: 0;
    padding: 0;
    background: var(--primary);
-   /* background-image: linear-gradient(to bottom right, #E0CCCB, #e1c1bf);*/
-   /* background-color:hsla(0,65%,69%,1);
-   background-image:
-   radial-gradient(at 14% 82%, hsla(333,41%,80%,1) 0px, transparent 50%),
-   radial-gradient(at 31% 16%, hsla(327,41%,73%,1) 0px, transparent 50%),
-   radial-gradient(at 80% 0%, hsla(300,42%,86%,1) 0px, transparent 50%),
-   radial-gradient(at 0% 50%, hsla(340,32%,72%,1) 0px, transparent 50%),
-   radial-gradient(at 80% 85%, hsla(340,50%,83%,1) 0px, transparent 50%),
-   radial-gradient(at 80% 100%, hsla(298,51%,84%,1) 0px, transparent 50%),
-   radial-gradient(at 0% 0%, hsla(343,63%,77%,1) 0px, transparent 50%); */
 }
-
 /************************/
 
 /* HERO STYLES */
@@ -91,7 +80,6 @@ body {
    color: var(--secondary);
    font-size: 18px;
 }
-
 /*****************************************************/
 /*****************************************************/
 
@@ -107,7 +95,6 @@ body {
    justify-content: center;
    align-items: center;
 }
-
 /************************/
 
 .background {
@@ -180,31 +167,34 @@ body {
    background-color: var(--secondary);
    transition: all 0.7s ease-in-out;
 }
-
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~~ LOGIN AND SIGN-UP HTML PAGE ~~~~~~*/
 .user-log {
-   /* border: 1px solid var(--secondary); */
    border-radius: 26px;
    padding: 25px 0;
-   ;
 }
-
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~~ ALL POSTS HTML ~~~~~~*/
+.no-posts {
+   color: var(--secondary);
+   background: var(--primary);
+   width: 300px;
+   border-radius: 26px;
+   text-align: center;
+   align-self: center;
+   padding: 10px 0;
+}
+
 .posts {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
-   /* margin: 0 auto;
-   padding: 40px 0;
-   margin-top: 220px; */
    padding-bottom: 40px;
 }
 
@@ -254,48 +244,29 @@ a {
    padding-bottom: 0px;
    margin: 0;
 }
-
 /*****************************************************/
 /*****************************************************/
 
 /*~~~~~ SINGLE-POST PAGE ~~~~~~*/
+.black-text {
+   color: black;
+}
+
 .single {
    padding: 0 60px 60px 60px;
 }
 
 .single-post-top {
    background-color: #8c5754;
-   height: 350px;
    border: 1px black solid;
    border-radius: 15px;
-   /* text-align: center;
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center; */
 }
 
 .post-photo {
-   /* background-image: url('./images/background.jpeg'); */
    background-size: cover;
-   /* min-height: 100%; */
+   background-position: center;
    border-radius: 15px 0 0 15px;
 }
-
-/* .post-photo {
-   background-image: url('./images/background.jpeg');
-   background-size: cover;
-   min-height: 100%;
-   border-radius: 15px;
-} */
-
-/* .post-photo img {
-   width:100%;
-   height:100%;
-   object-fit: cover;
-   border-radius: 15px 0 0 15px;
-}  */
 
 .single-post-middle {
    min-height: 150px;
@@ -310,10 +281,16 @@ a {
    margin-left: 10px;
 }
 
+.single-text h3 {
+   font-size: 15px;
+   color: var(--primary);
+   margin-top: 5px;
+   margin-left: 10px;
+}
+
 .single-text p {
    color: white;
-   margin-top: 10px;
-   margin-left: 10px;
+   margin: 10px;
 }
 
 .tip {
@@ -323,20 +300,6 @@ a {
    background-color: var(--form-background);
    width: 90%;
 }
-
-/* .radio-tip {
-   height: 50px;
-   border: 3px var(--secondary) solid;
-   border-radius: 26px;
-   width: 90%;
-}
-
-.radio-tip-lg {
-   height: 70px;
-   border: 3px var(--secondary) solid;
-   border-radius: 26px;
-   width: 90%;
-} */
 
 .tips-heading {
    font-style: italic;
@@ -377,18 +340,21 @@ a {
 }
 
 .places {
-   padding-top: 16px;
-   border: 1px solid var(--secondary);
+   padding-left: 25px;
    border-radius: 15px;
 }
 
 .tips-columns {
-   padding: 0 50px;
+   padding: 0 40px 0 70px;
+}
+
+.tips-columns-left {
+   padding: 0 40px 0 30px;
 }
 
 /* buttons */
 .btn-save {
-   margin: 10px 10px 0 10px;
+   margin: 0;
    padding: 6px 30px;
 }
 
@@ -413,19 +379,7 @@ a {
    background-color: var(--primary);
    font-size: 11px;
    color: #68705c;
-
-
 }
-
-/* .comment-btn {
-   border: none;
-   background: none;
-   font-style: italic;
-   font-weight: bolder;
-   font-size: 28px;
-   color: #68705c;
-   margin-left: 50px;
-} */
 
 .fa-heart {
    color: var(--secondary);
@@ -439,6 +393,81 @@ a {
    color: var(--secondary);
 }
 
+/* MODAL SECTION */
+.modal-single {
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgba(14, 13, 27, 0.4);
+   transition: all 0.3s ease-in-out;
+}
+
+.modal-info {
+   background-color: var(--secondary);
+   width: 25%;
+   margin: auto;
+   border-radius: 26px;
+   padding: 15px 0;
+}
+
+.form-input {
+   font-weight: bold;
+   font-size: 20px;
+   border-radius: 26px;
+   padding-bottom: 10px;
+}
+
+.modal-btns {
+   border-radius: 26px;
+}
+
+.modal-btns:hover {
+   font-weight: bold;
+   color: white;
+   background-color: var(--secondary);
+   transition: all 0.6s ease-in-out;
+   opacity: 0.5;
+}
+
+.modal-btns:not(:hover) {
+   font-weight: bold;
+   color: var(--secondary);
+   background-color: var(--primary);
+   transition: all 0.7s ease-in-out;
+}
+
+.red-btns {
+   border-radius: 26px;
+}
+
+.red-btns:hover {
+   font-weight: bold;
+   color: white;
+   background-color: red;
+   transition: all 0.6s ease-in-out;
+   opacity: 0.5;
+}
+
+.red-btns:not(:hover) {
+   font-weight: bold;
+   color: var(--secondary);
+   background-color: var(--primary);
+   transition: all 0.7s ease-in-out;
+}
+
+.show {
+   opacity: 1;
+}
+
+.hide {
+   opacity: 0;
+   visibility: hidden;
+   transition: all 500ms ease-out;
+}
 /*****************************************************/
 /*****************************************************/
 
@@ -519,6 +548,7 @@ a {
 .create-btn-div {
    display: flex;
    justify-content: center;
+   margin: 15px 0;
 }
 
 .apply-border {
@@ -529,15 +559,6 @@ a {
    color: var(--secondary);
    font-size: 15px;
 }
-
-/* select {
-   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-   background-position: right 0.5rem center;
-   background-repeat: no-repeat;
-   background-size: 1.5em 1.5em;
-   padding-right: 2.5rem;
-   -webkit-print-color-adjust: exact;
-} */
 
 .select-drop {
    background-color: var(--form-background);
@@ -554,7 +575,6 @@ a {
 
 /* buttons */
 .btn-upload {
-   /* box-shadow: 0px 0px 10px 5px var(--secondary); */
    margin: 5px;
    padding: 6px 30px;
 }
@@ -573,42 +593,59 @@ a {
    background-color: var(--secondary);
    transition: all 0.7s ease-in-out;
 }
-
 /*****************************************************/
 /*****************************************************/
 
 /* MEDIA QUERY STYLES  */
-@media only screen and (max-width: 576px) {
-   .navigation {
-      padding: 0 40px;
+/*Post Media Query-tablet*/
+@media only screen and (max-width: 768px){
+   /*create-post*/
+   label.file-input{
+      width:75%;
    }
+   div.col-4.tips-columns{
+      width:50%;
+   }
+   input#tips.tips-columns{
+      width:100%;
+   }
+   .text-center{
+      width:100%;
+   }
+   div.tip.text-center.my-2{
+      height:auto;
+   }
+   /*single-post*/
+   section.single-post-middle{
+      width:auto;
+   }
+   #single-post-view{
+      width:100%;
+   }
+}
 
-   .search {
-      padding-top: 0;
-      padding-bottom: 20px;
-      margin-bottom: 20px;
+/*Post Media Query-Phone*/
+@media only screen and (max-width: 425px){
+   /*create-post*/
+   div.col-4.tips-columns{
+      width:100%;
+      font-size:10px;
+      display:inline-grid;   
    }
-
-   .curr-container {
-      padding: 0;
+   label.file-input{
+      width:fit-content;
+      height:20%;
+      font-size:12px;
    }
-
-   .current {
-      margin: 40px 35px;
-      padding: 25px;
+   div.col-5{
+      font-size:12px;
    }
-
-   .current h3 {
-      font-size: 18px;
+   #tips{
+      width:100%;
+      height:200%;
+      align-items:flex-grid;
    }
-
-   .forecast {
-      flex-wrap: wrap;
-      padding-top: 0;
-   }
-
-   .days {
-      width: 100%;
-      margin-bottom: 10px;
-   }
+   #description{
+      font-size:10px;
+}
 }
