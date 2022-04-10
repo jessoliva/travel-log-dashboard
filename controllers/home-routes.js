@@ -93,8 +93,6 @@ router.get('/posts/:id', (req, res) => {
                     comment.can_delete = true;
                 }
             });
-            console.log(req.session);
-            console.log(post.comments);
 
 
 
