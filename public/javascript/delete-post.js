@@ -14,7 +14,24 @@ async function deleteFormHandler(event) {
     } else {
       alert(response.statusText);
     }
+};
+document.querySelector('#delete-post').addEventListener('click', deleteFormHandler);
+
+// modal element
+const modalEl = document.querySelector('#generate-modal');
+
+function displayModal() {
+  // display modal
+  modalEl.classList.add("show");
+  modalEl.classList.remove("hide");
+};
+document.querySelector('#delete-post-btn').addEventListener('click', displayModal);
+  
+function closeModal(event) {
+  event.preventDefault();
+
+  // close modal
+  modalEl.classList.add("hide");
+  modalEl.classList.remove("show");
 }
-  
-document.querySelector('#delete-post-btn').addEventListener('click', deleteFormHandler);
-  
+document.querySelector('#close-modal').addEventListener('click', closeModal);

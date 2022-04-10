@@ -4,13 +4,9 @@
         <!-- travel section -->
         <section class="single-post-top row mx-5 mt-5 mb-3">
             {{#if post.image_name}}
-            <div class="col-5 post-photo" style="background-image: url('../images/{{post.image_name}}')">
-                {{!-- <img src="../images/{{post.image_name}}" /> --}}
-            </div>
+            <div class="col-5 post-photo" style="background-image: url('../images/{{post.image_name}}')"></div>
             {{else}}
-            <div class="col-5 post-photo" style="background-image: url('../images/test.jpeg')">
-                {{!-- <img src="../images/{{post.image_name}}" /> --}}
-            </div>
+            <div class="col-5 post-photo" style="background-image: url('../images/test.jpeg')"></div>
             {{/if}}
 
             <div class="col-7 single-text">
@@ -29,50 +25,94 @@
                 <div class="create-btn-div">
                     <button id="delete-post-btn" type="click" class="mt-3 btn-save btn rounded-pill shadow">Delete</button>
                 </div>
+
+                <!-- modal for generate workout section -->
+                <div id="generate-modal" class="hide modal-single modal-fade d-flex align-items-center">
+                    <!-- modal info -->
+                    <div class="modal-info">
+                        <form id="user-form" class="d-flex flex-wrap justify-content-center align-items-center">
+                            <p class="form-input w-100  m-0 text-center"/>Confirm Post Deletion.</p>
+
+                            <button
+                            id="delete-post"
+                            type="submit"
+                            class="red-btns mx-2 btn"
+                            >
+                            Delete
+                            </button>
+
+                            <button
+                            id="close-modal"
+                            type="submit"
+                            class="modal-btns btn"
+                            >
+                            Close
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 {{/if}}
 
             </div>
         </section>
 
         <section class="single-post-bottom mx-5 row">
-
-            {{!-- PLACES AND COST --}}
-            <div class="col-6 tips-columns">
-                <p class="tips-heading">places</p>
-                <div class="places">
-                    {{#if post.restaurants}}
-                    <div class="display-info text-center">Favorite Restaurants</div>
-                    <p class="text-center">{{fix_case post.restaurants}}</p>
-                    {{/if}}
-                    {{#if post.attractions}}
-                    <div class="display-info text-center">Attractions</div>
-                    <p class="text-center">{{fix_case post.attractions}}</p>
-                    {{/if}}
-                </div>  
-                <p class="tips-heading">cost</p>
-                <div class="places">
-                    {{#if post.meal_cost}}
-                    <div class="display-info text-center">Avg Cost Per Meal Per Person</div>
-                    <p class="text-center">{{post.meal_cost}}</p>
-                    {{/if}}
-                    {{#if post.hotel_cost}}
-                    <div class="display-info text-center">Avg Cost Per Night in Hotes/Airbnb </div>
-                    <p class="text-center">{{post.hotel_cost}}</p>
-                    {{/if}}
-                </div>  
-            </div>
-
-            {{!--  --}}
-            <div class="col-6 tips-columns">
+            {{!-- TIPS --}}
+            <div class="col-8 tips-columns">
                 {{#if post.tips}}
                 <p class="tips-heading">travel tips</p>
-                <div class="display-info">{{post.tips}}</div>
+                <div class="display-info places">{{post.tips}}</div>
                 {{/if}}
 
-                <p class="tips-heading">best for</p>
-                <div class="display-info">Pet Friendly: {{post.pet_friendly}}</div>
-                <div class="display-info">Kid Friendly: {{post.kid_friendly}}</div>
-                <div class="display-info">Safety Rating: {{post.safety_rating}}</div>
+                {{!-- BEST-FOR --}}
+                <p id="best-p" class="tips-heading">best for</p>
+                <div id="best-for" class="d-flex flex-wrap">
+                    {{#if post.pet_friendly}}
+                    <div class="places d-flex flex-wrap justify-content-center">
+                        <div class="display-info w-100 text-center">Pet Friendly</div>
+                        <p>{{post.pet_friendly}}</p>
+                    </div>
+                    {{/if}}
+
+                    {{#if post.kid_friendly}}
+                    <div class="places d-flex flex-wrap justify-content-center">
+                        <div class="display-info w-100 text-center">Kid Friendly</div>
+                        <p>{{post.kid_friendly}}</p>
+                    </div>
+                    {{/if}}
+
+                    {{#if post.safety_rating}}
+                    <div class="places d-flex flex-wrap justify-content-center">
+                        <div class="display-info w-100 text-center">Safety Rating</div>
+                        <p>{{post.safety_rating}}</p>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+
+            {{!-- PLACES AND COST --}}
+            <div class="col-4 tips-columns-left">
+                <p id="places-p" class="tips-heading">places</p>
+                <div id="places" class="places">
+                    {{#if post.restaurants}}
+                    <div class="display-info">Favorite Restaurants</div>
+                    <p>{{fix_case post.restaurants}}</p>
+                    {{/if}}
+                    {{#if post.attractions}}
+                    <div class="display-info pb-0">Attractions</div>
+                    <p>{{fix_case post.attractions}}</p>
+                    {{/if}}
+                </div>  
+                <p id="cost-p" class="tips-heading">cost</p>
+                <div id="cost" class="places">
+                    {{#if post.meal_cost}}
+                    <div class="display-info">Avg Cost Per Meal Per Person: <span class="black-text">&nbsp;{{post.meal_cost}}</span></div>
+                    {{/if}}
+                    {{#if post.hotel_cost}}
+                    <div class="display-info">Avg Cost Per Night in Hotels/Airbnb: <span class="black-text">&nbsp;{{post.hotel_cost}}</span></div>
+
+                    {{/if}}
+                </div>  
             </div>
         </section>
 
