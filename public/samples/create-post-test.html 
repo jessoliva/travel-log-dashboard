@@ -1,0 +1,101 @@
+<main class="p-0">
+
+    <!-- Left Side of Top Row of Create Post Page -->
+    <div class="create-post">
+        <section class="create-post-top row mx-5 mt-5 mb-3">
+            <div class="col-5 cp-top-left">
+                <input name="title" id="title" type="text" autofocus="true" placeholder="Post Title" class="tip-create p-2 rounded-pill text-center" />
+                <input name="city" id="city" type="text" autofocus="true" placeholder="City" class="tip-create p-2 rounded-pill text-center" />
+                <input name="state_province" id="state_province" type="text" autofocus="true" placeholder="State/Province/Region" class="tip-create p-2 rounded-pill text-center" />
+                <input name="country" id="country" type="text" autofocus="true" placeholder="Country" class="tip-create p-2 rounded-pill text-center" />
+
+            </div>
+
+            <!-- Right Side of Top Row - Describe Journey -->
+            <div class="col-7">
+                <textarea class="cp-top-right mt-0 p-3" type="text" id="description"
+            placeholder="Describe your journey."></textarea>
+            </div>
+        </section>
+
+        <!-- Bottom Part of Create Form Page-->
+        <section class="cp-bottom mx-5 row">
+
+            <!-- Left Column of inputs - Places and Cost -->
+            <div class="col-4">
+                <p class="tips-heading">places</p>
+                    <input name="restaurants" id="restaurants" type="text" autofocus="true" placeholder="Favorite Restaurants" class="tip-create p-2 rounded-pill text-center" />
+                    <input name="attractions" id="attractions" type="text" autofocus="true" placeholder="Favorite Attractions" class="tip-create p-2 rounded-pill text-center" />
+
+                <p class="tips-heading">cost</p>
+                    <!-- Drop down for Meal Costs -->
+                    <label class="tips-label text-center" for="meal-cost">Avg Cost per Meal per Person</label>
+                        <select name="meal-cost" id="meal-cost" class="select-drop">
+                            <option>Select An Avg Cost</option>
+                            <option value="$">Under $10</option>
+                            <option value="$$">$11 – $30</option>
+                            <option value="$$$">$31 – $60</option>
+                            <option value="$$$$">over $61</option>
+                        </select>
+
+                    <!-- Drop Down for Hotel Costs -->
+                    <label class="tips-label text-center mt-2" for="hotel-cost">Per Night Cost in Hotel/Airbnb</label>
+                        <select name="hotel-cost" id="hotel-cost" class="select-drop">
+                            <option>Select An Avg Cost</option>
+                            <option value="$">Under $70</option>
+                            <option value="$$">$71 – $120</option>
+                            <option value="$$$">$121 – $200</option>
+                            <option value="$$$$">over $201</option>
+                        </select>
+            </div>
+
+            <!-- Middle Column of Inputs - Tips -->
+            <div class="col-4">
+                <p class="tips-heading">tips</p>
+                {{!-- <input class="tips-entry text-center" type="text" id="tips" placeholder="Enter Travel and Safety Tips" /> --}}
+                    <textarea class="tips-entry p-3" type="text" id="tips" placeholder="Do you have any travel or safety tips?"></textarea>
+            </div>
+            
+            <!-- Right Column of Inputs - "Best For" and "Create Post" Button-->
+            <div class="col-4">
+                <p class="tips-heading">best for</p>
+                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Kid Friendly?&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="yes"> Yes
+                        <input type="radio" name="kid-friendly" id="kid-friendly" value="no"> No
+                    </form>
+                </div>
+
+                <div class="radio-tip my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Pet Friendly?&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="yes"> Yes
+                        <input type="radio" name="pet-friendly" id="pet-friendly" value="no"> No
+                    </form>
+                </div>
+
+                <div class="radio-tip-lg my-2 d-flex flex-wrap justify-content-center align-content-center">
+                    Safety Rating:&nbsp;&nbsp;
+                    <form>
+                        <input type="radio" name="safety-rating" id="safety-rating" value="safe"> Safe
+                        <input type="radio" name="safety-rating" id="safety-rating" value="ok"> Be Mindful
+                        <input type="radio" name="safety-rating" id="safety-rating" value="dangerous"> Pepper Spray
+                    </form>
+                </div>
+
+                <div class="create-btn-div">
+
+                    <form class="d-flex flex-wrap justify-content-center" method="post" action="/create" enctype="multipart/form-data">  
+                        <input type="file" id="post-images" name="image" class="image-upload"/>
+                        <input id="create-post-btn" type="submit" value="Create Post" class="btn-upload btn rounded-pill shadow"/>
+                    </form>
+                    {{!-- <button id="create-post-btn" type="click" class="mt-4 btn-search btn rounded-pill shadow">Create Post</button> --}}
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+<script src="/javascript/create-post.js"></script>

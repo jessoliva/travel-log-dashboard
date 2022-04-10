@@ -1,0 +1,21 @@
+{{#if posts}}    
+<main class="home_log_sign mb-4">
+    <div class="posts"> 
+        {{#each posts as |post|}}
+            <a href="/posts/{{id}}" class="post">
+                <div class="img-container">
+                    <img src="../images/{{image_name}}" />
+                </div>
+                <h3 class="location">{{fix_case city}}, {{fix_case state_province}}</h3>
+                <h3 class="country">{{fix_case country}}</h3>
+                <h3 class="title text-center text-white">{{fix_case title}}</h3>
+            </a>
+        {{/each}}
+    </div>
+</main>
+
+{{else}}
+<main class="h-100 d-flex align-items-center justify-content-center mb-4 background">
+    <p class="no-posts">You haven't posted anything yet!</p>
+</div>
+{{/if}}
