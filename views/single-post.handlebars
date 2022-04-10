@@ -91,7 +91,9 @@
         {{> comments post.comments}}
     </div>
 </main>
+{{#if loggedIn}}
 <script src="/javascript/comments.js"></script>
+{{/if}}
 <script src="/javascript/single-post.js"></script>
 {{#if deletePost}}
 <script src="/javascript/delete-post.js"></script>

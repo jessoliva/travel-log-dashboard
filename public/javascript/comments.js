@@ -14,4 +14,7 @@ async function deleteFormHandler(event) {
 
 
 
-document.querySelector("#comments").addEventListener("click", deleteFormHandler);
+
+document.querySelectorAll(".delete-comment-btn").forEach(btn => {
+    btn.addEventListener("click", deleteFormHandler)
+});
