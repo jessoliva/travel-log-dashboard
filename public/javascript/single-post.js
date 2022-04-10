@@ -30,4 +30,5 @@ async function commentFormHandler(event) {
     }
 }
 
+
 document.querySelector('#comment-btn').addEventListener('click', commentFormHandler);

@@ -1,4 +1,4 @@
-<div class="comments">
+<div class="comments" id="comments">
     {{#each this}}
     <section class="comment">
         <div class="text">
@@ -6,7 +6,11 @@
         </div>
         <div class="meta">
             {{fix_case user.username}} on {{format_date created_at}}
+            {{#if can_delete}}
+            <button class="delete-comment-btn" data-commentid="{{id}}">x</button>
+            {{/if}}
         </div>
+
 
     </section>
     {{/each}}
