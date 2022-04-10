@@ -6,11 +6,8 @@ This app is perfect to for sharing stories, tips, and info about your travel exp
 
 - [✨&nbsp; Description](#description)
 - [🌼&nbsp; Features](#features)
-- [🛠️&nbsp; Installation](#installation)
-- [👩🏽‍💻&nbsp; Usage](#usage)
 - [✏️&nbsp; Contribution Guidelines](#contribution-guidelines)
 - [👨‍👩‍👧‍👦&nbsp; Credits](#credits)
-- [📱&nbsp; Contact](#contact)
 - [📰&nbsp; License](#license)
 
 ## ✨&nbsp; Description
